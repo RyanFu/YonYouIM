@@ -1,0 +1,42 @@
+				
+				
+				<div class="post-item" id="{{post.id}}">
+						<div class="no-avt fl rainbow-{{post.nickName | firstLetter}}">
+							{{post.nickName | cutName:2}}
+						</div>
+						<!--<div class="avt-box fl">
+							<img src="" onerror="defaultAvatar($(this))">
+						</div>-->
+						<div class="pi-r">
+							<div class="p-auth">
+								<div class="gray1 fr">{{post.ts | dateFormat}}</div>
+								<span class="u-name ellipsis font1" uid="{{post.username}}" >{{post.nickName}}</span>
+							</div>
+							<div class="p-cont clearfix">
+								{{#post.cont}}
+							</div>
+							<div class="clearfix post-foot">
+								<div class="praise {{post.praiseUsers | canPraise}} fr"><span class="praise-num">{{post.praiseUsers | count}}</span></div>
+								<div class="reply-btn fr">
+									<b class="reply-icon">{{post.replyList | count}}</b>
+								</div>
+							</div>
+							<div class="reply-blk clearfix {{if !(post.replyList && post.replyList.length)}}hidden{{/if}}">
+								<span class="tri-up fr relative"><b></b><b></b></span>
+								{{if (post.replyList && post.replyList.length)}}
+										{{each post.replyList as value1 j}}
+										<!-- <p class="reply-item" id="{{value1.id}}"><a mid="{{value1.member_id}}" class="reply">{{value1.name}}</a> -->
+										<div class="reply-item" fromid="{{value1.userFrom}}">
+											<span class="pie rainbow-{{value1.nickNameFrom | firstLetter}}">{{value1.nickNameFrom |cutName:2}}</span>
+											<div class="clearfix">
+												<span class="fr">{{value1.ts |dateFormat}}</span>
+												<a class="reply">{{value1.nickNameFrom}}</a>
+												<span class="{{value1.userTo | rplToOther}}"><span style="margin:0 2px;">回复</span><a>{{value1.nickNameTo}}</a></span>
+											<p style="margin-top: 5px;">{{#value1.cont}}</p>
+											</div>	
+										</div>
+										{{/each}}
+								{{/if}}
+							</div>
+						</div>
+					</div>

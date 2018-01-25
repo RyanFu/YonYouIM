@@ -1,0 +1,7 @@
+			{{each myspaces as value i}}
+				<li class="{{#value.id | iscurrentsps:value.name}}">
+					<span sid="{{value.id}}" class="sps-link">{{value.name}}</span>
+				</li>
+			{{/each}}
+		
+

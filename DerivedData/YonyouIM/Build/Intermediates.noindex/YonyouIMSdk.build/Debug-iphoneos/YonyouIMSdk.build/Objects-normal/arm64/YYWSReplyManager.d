@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Protocol/Wallspace/Delegate/YYWSReplyManager.m \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Protocol/Wallspace/Delegate/YYWSReplyManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Protocol/Wallspace/Delegate/YYWallspaceBaseDataManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYIMWallspaceDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSSpaceDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSSpaceUserRelationDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSSpaceUserAuthDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSPostDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSReplyDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSUserDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSDynamicDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Delegate/Wallspace/YYWSNotifyDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Protocol/Wallspace/YYWSReplyProtocol.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Module/Wallspace/YYIMWallspaceConfig.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMStringUtility.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFNetworking.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLRequestSerialization.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLResponseSerialization.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFSecurityPolicy.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFNetworkReachabilityManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLSessionManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFHTTPSessionManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFHTTPUploadOperationManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/JUMP/Utilities/YMGCDMulticastDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Module/Wallspace/YYIMWallspaceDefs.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Core/YYIMConfig.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYSettings.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Core/YYIMLogger.h

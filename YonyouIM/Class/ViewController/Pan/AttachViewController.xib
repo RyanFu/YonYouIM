@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AttachViewController">
+            <connections>
+                <outlet property="downloadLabel" destination="QJw-6R-I63" id="fwm-Nd-6wg"/>
+                <outlet property="iconImage" destination="c6v-Dy-vwy" id="G5t-uR-dpz"/>
+                <outlet property="nameLabel" destination="Vhl-wa-5mW" id="SUR-x7-Oce"/>
+                <outlet property="progressContainer" destination="D81-1C-aVL" id="YUM-re-zjD"/>
+                <outlet property="sizeLabel" destination="4kM-p7-JYm" id="iX5-qu-CM0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c6v-Dy-vwy" userLabel="iconImage">
+                    <rect key="frame" x="270" y="120" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="Sc8-oz-fdP"/>
+                        <constraint firstAttribute="height" constant="60" id="l4d-LS-6am"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="520" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-wa-5mW" userLabel="nameLabel">
+                    <rect key="frame" x="300" y="188" width="0.0" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="A6K-bf-SY7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kM-p7-JYm" userLabel="sizeLabel">
+                    <rect key="frame" x="300" y="218" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJw-6R-I63" userLabel="downloadLabel">
+                    <rect key="frame" x="300" y="238" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D81-1C-aVL">
+                    <rect key="frame" x="20" y="242" width="560" height="10"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="KaM-ql-GIC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="c6v-Dy-vwy" secondAttribute="centerY" multiplier="2:1" id="0DV-8O-Lcy"/>
+                <constraint firstAttribute="centerX" secondItem="4kM-p7-JYm" secondAttribute="centerX" id="3pA-cB-BaP"/>
+                <constraint firstItem="QJw-6R-I63" firstAttribute="top" secondItem="4kM-p7-JYm" secondAttribute="bottom" constant="20" id="FJg-jc-IbH"/>
+                <constraint firstItem="D81-1C-aVL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="FhP-Lw-3iw"/>
+                <constraint firstAttribute="centerX" secondItem="QJw-6R-I63" secondAttribute="centerX" id="HiU-CV-3Ep"/>
+                <constraint firstItem="Vhl-wa-5mW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="STS-9d-Epv"/>
+                <constraint firstItem="Vhl-wa-5mW" firstAttribute="top" secondItem="c6v-Dy-vwy" secondAttribute="bottom" constant="8" id="YJi-DE-q2V"/>
+                <constraint firstItem="D81-1C-aVL" firstAttribute="top" secondItem="QJw-6R-I63" secondAttribute="bottom" constant="4" id="YYD-ln-SxX"/>
+                <constraint firstAttribute="centerX" secondItem="c6v-Dy-vwy" secondAttribute="centerX" id="ho4-tE-hH5"/>
+                <constraint firstAttribute="trailing" secondItem="Vhl-wa-5mW" secondAttribute="trailing" constant="40" id="jfq-ha-jEh"/>
+                <constraint firstAttribute="trailing" secondItem="D81-1C-aVL" secondAttribute="trailing" constant="20" id="nya-DX-JRi"/>
+                <constraint firstItem="4kM-p7-JYm" firstAttribute="top" secondItem="Vhl-wa-5mW" secondAttribute="bottom" constant="30" id="oTE-bk-v4f"/>
+                <constraint firstAttribute="centerX" secondItem="Vhl-wa-5mW" secondAttribute="centerX" id="pqX-xc-Ei4"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="STS-9d-Epv"/>
+                    <exclude reference="jfq-ha-jEh"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

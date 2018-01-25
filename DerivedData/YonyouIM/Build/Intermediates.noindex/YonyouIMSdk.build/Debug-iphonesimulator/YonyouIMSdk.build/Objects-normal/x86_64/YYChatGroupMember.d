@@ -1,0 +1,5 @@
+dependencies: \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYChatGroupMember.m \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYChatGroupMember.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYUser.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMStringUtility.h

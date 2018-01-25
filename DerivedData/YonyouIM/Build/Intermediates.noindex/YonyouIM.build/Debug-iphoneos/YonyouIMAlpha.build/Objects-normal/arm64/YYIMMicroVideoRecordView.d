@@ -1,0 +1,34 @@
+dependencies: \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Class/View/UI/MicroVideo/YYIMMicroVideoRecordView.m \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Class/View/UI/MicroVideo/YYIMMicroVideoRecordView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/DerivedData/YonyouIM/Build/Products/Debug-iphoneos/include/YonyouIMSdk/YYIMResourceUtility.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/DerivedData/YonyouIM/Build/Products/Debug-iphoneos/include/YonyouIMSdk/YYIMDefs.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/DerivedData/YonyouIM/Build/Products/Debug-iphoneos/include/YonyouIMSdk/YYIMError.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/DerivedData/YonyouIM/Build/Products/Debug-iphoneos/include/YonyouIMSdk/YYAttach.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Class/Utility/YYIMColorHelper.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecorder.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecordSession.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecordSessionSegment.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCAssetExportSession.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCFilter.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCFilterAnimation.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCVideoConfiguration.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCMediaTypeConfiguration.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCAudioConfiguration.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCContext.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCImageView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCPhotoConfiguration.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecorderTools.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecorderDelegate.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecorderHeader.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCSampleBufferHolder.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCVideoPlayerView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCPlayer.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCSwipeableFilterView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCFilterImageView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCRecorderToolsView.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/NSURL+SCSaveToCameraRoll.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/UIImage+SCSaveToCameraRoll.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCFilter+VideoComposition.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/YonyouIM/Vender/SCRecorder/SCFilter+UIImage.h \
+  /Users/hb/project/sns-im-ios/YonyouIM/DerivedData/YonyouIM/Build/Products/Debug-iphoneos/include/YonyouIMSdk/YYIMLogger.h

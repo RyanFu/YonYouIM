@@ -1,0 +1,15 @@
+		<ul class="user-srh-res">
+			{{each userList as value i}}
+				<li class="clearfix">
+					<div class="pie rainbow-{{value.name | firstLetter}}">{{value.name | cutName:2}}</div>
+					<div  class="r-blk clearfix">
+					<input id="user_{{i}}" type="checkbox" class="fr checkbox"> <label for="user_{{i}}" ></label>
+						{{value.name}}
+						<div class="weak user-name">{{value.username}}</div>
+					
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+
+

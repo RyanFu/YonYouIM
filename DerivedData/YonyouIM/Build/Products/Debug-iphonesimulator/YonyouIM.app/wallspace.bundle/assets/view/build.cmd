@@ -1,0 +1,1 @@
+tmod --output ../js/template

@@ -1,0 +1,9 @@
+{{each userList as value i}}
+	<li>
+		<span class="pie rainbow-{{value.name | firstLetter}}">{{value.name | cutName:2}}</span>
+		<div>{{value.name}}</div>
+	</li>
+{{/each}}
+		
+		
+

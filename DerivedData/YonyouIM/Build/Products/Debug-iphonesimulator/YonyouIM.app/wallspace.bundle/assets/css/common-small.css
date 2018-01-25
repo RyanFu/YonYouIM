@@ -1,0 +1,291 @@
+@charset "utf-8";
+
+/*from original layout.css start*/
+header {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background: #14212b;
+    padding: 0;
+    color: #eee;
+    font-size: 16px;
+    text-align: center;
+}
+footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f8f7;
+    padding: 0;
+    border-top: 1px solid #eae5e5;
+}
+#wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+/*from original layout.css end*/
+
+/* 通用样式 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,select,textarea,button,p,blockquote,table,th,td,figure,img
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+html {
+    -ms-touch-action: none;
+}
+body,ul,li,p{
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+body {
+    font-size: 15px;/*ori:16*/
+    font-family: "microsoft yahei", ubuntu, helvetica, arial;
+    overflow: hidden;
+    /* this is important to prevent the whole page to bounce */
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:#fff;
+}
+b{
+	font-weight: normal;
+}
+
+.weak{
+	color: #858E99;
+}
+
+.clearfix{
+	zoom: 1;
+}
+.clearfix:before,.clearfix:after{
+	content: "";
+	display: table;
+}
+.clearfix:after{
+	clear: both;
+}
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.center-align{
+	text-align: center;
+}
+.ellipsis{
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.relative{
+	position: relative;
+}
+.buried{
+	z-index: -1!important;
+}
+.dropdown{
+	position: relative;
+}
+.drop-menu{
+	position: absolute;
+}
+#msg_box{
+	position: fixed;
+	top:50%;
+	width: 150px;
+	font-size: 1.3em;
+	left: 50%;
+	text-align: center;
+	margin-left: -75px;
+	padding: 5px 20px;
+	z-index: 5;
+	-webkit-transition: 1s;
+	background: rgba(204,204,204,0.5);
+}
+/*rainbow*/
+.rainbow-a{
+	border-color: #7f352c;
+	background-color: #7f352c;	
+}
+.rainbow-b{
+	border-color: #41b6e1;
+	background-color: #41b6e1;	
+}
+.rainbow-c{
+	border-color: #ff6599;
+	background-color:#ff6599 ;	
+}
+.rainbow-d{
+	border-color: #bc4e73;
+	background-color: #bc4e73;	
+}
+.rainbow-e{
+	border-color: #8c5de9;
+	background-color: #8c5de9;	
+}
+.rainbow-f{
+	border-color: #4b7dd6;
+	background-color: #4b7dd6;	
+}
+.rainbow-g{
+	border-color: #d9a954;
+	background-color: #d9a954;	
+}
+.rainbow-h{
+	border-color: #bbb215;
+	background-color: #bbb215;	
+}
+.rainbow-i{
+	border-color: #d5564f;
+	background-color: #d5564f;	
+}
+.rainbow-j{
+	border-color: #d9ad44;
+	background-color: #d9ad44;	
+}
+.rainbow-k{
+	border-color: #0e7f73;
+	background-color: #0e7f73;	
+}
+.rainbow-l{
+	border-color: #CD4046;
+	background-color: #CD4046;	
+}
+.rainbow-m{
+	border-color: #94345A;
+	background-color: #94345A;	
+}
+.rainbow-n{
+	border-color: #318AB0;
+	background-color: #318AB0;	
+}
+.rainbow-o{
+	border-color: #81076C;
+	background-color: #81076C;	
+}
+.rainbow-p{
+	border-color: #0CAAA5;
+	background-color: #0CAAA5;	
+}
+.rainbow-q{
+	border-color: #116CBA;
+	background-color: #116CBA;	
+}
+.rainbow-r{
+	border-color: #562493;
+	background-color: #562493;	
+}
+.rainbow-s{
+	border-color: #2F54AF;
+	background-color: #2F54AF;	
+}
+.rainbow-t{
+	border-color: #B3610D;
+	background-color: #B3610D;	
+}
+.rainbow-u{
+	border-color: #4945b3;
+	background-color: #4945b3;	
+}
+.rainbow-v{
+	border-color: #8baf41;
+	background-color: #8baf41;	
+}
+.rainbow-w{
+	border-color: #8144ae;
+	background-color: #8144ae;	
+}
+.rainbow-x{
+	border-color: #549c2c;
+	background-color: #549c2c;	
+}
+.rainbow-y{
+	border-color: #299a60;
+	background-color: #299a60;	
+}
+.rainbow-z{
+	border-color: #a9326a;
+	background-color: #a9326a;	
+}
+.rainbow-1{
+	border-color: #d9ad44;
+	background-color: #d9ad44;	
+}
+.rainbow-2{
+	border-color: #549c2c;
+	background-color: #549c2c;	
+}
+.rainbow-3{
+	border-color: #b3610d;
+	background-color: #b3610d;	
+}
+.rainbow-4{
+	border-color: #f5a623;
+	background-color: #f5a623;	
+}
+.rainbow-5{
+	border-color: #ef6599;
+	background-color: #ef6599;	
+}
+.rainbow-6{
+	border-color: #cd4046;
+	background-color: #cd4046;	
+}
+.rainbow-7{
+	border-color: #bc4e73;
+	background-color: #bc4e73;	
+}
+.rainbow-8{
+	border-color: #0caaa5;
+	background-color: #0caaa5;	
+}
+.rainbow-9{
+	border-color: #8baf41;
+	background-color: #8baf41;	
+}
+.rainbow-0{
+	border-color: #4b7dd6;
+	background-color: #4b7dd6;	
+}
+.uni-btn{
+	padding: 4px 6px;
+    background-color: #43C113;
+    color: #ffffff;
+    border: none;
+    border-radius: 2px;
+}
+.uni-btn-gray{
+	padding: 4px 6px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 2px;
+}
+.refer-page {
+	float: left;
+	line-height: initial;
+	position: absolute;
+	left: 0;
+	top: 7px;
+}

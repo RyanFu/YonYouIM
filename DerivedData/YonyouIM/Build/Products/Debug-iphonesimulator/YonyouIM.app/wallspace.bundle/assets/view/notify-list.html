@@ -1,0 +1,55 @@
+{{each notify_list as value i}}
+	{{if value.notifyType==0}}
+	<li notifyType="{{value.notifyType}}"
+		 pid="{{value.params.postId}}"
+		>
+		<div class="l-blk">
+			<div class="pie rainbow-m">{{value.params.fromUserName | cutName:2}}</div>
+		</div>	
+		<div class="r-blk">
+			<div class="clearfix">
+				<span class="user">{{value.params.fromUserName}}</span>
+				<span class="time fr weak">{{value.ts | dateFormat}}</span>
+			</div>
+			<div class="weak cont">
+				{{if value.notifyType==0}}
+					回复了您：{{#value.content}} 
+				{{else}}
+				{{/if}}
+			</div>
+		</div>
+	{{else if value.notifyType==1}}
+	<li notifyType="{{value.notifyType}}" wsid="{{value.wsId}}">
+		
+		<div class="l-blk">
+			<div class="pie rainbow-t">{{"系统消息" | cutName:2}}</div>
+		</div>
+		<div class="r-blk">
+			<div>
+				<span class="user">{{"系统消息"}}</span>
+				<span class="time fr weak">{{value.ts | dateFormat}}</span>
+			</div>
+			<div class="weak cont">
+				{{value.content}}
+			</div>
+		</div>
+	{{else}}
+	<li notifyType="{{value.notifyType}}" applyid="{{value.params.applyId}}">
+		<div class="l-blk">
+			<div class="pie rainbow-t">{{"系统消息" | cutName:2}}</div>
+		</div>	
+		<div class="r-blk">
+			<div>
+				<span class="user">{{"系统消息"}}</span>
+				<span class="time fr weak">{{value.ts | dateFormat}}</span>
+			</div>
+			<div class="weak cont">
+				{{value.content}}
+			</div>
+		</div>
+	{{/if}}	
+	</li>
+{{/each}}
+		
+		
+

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BAC98EF254D2C90008F4259C9466E2D44F562B9C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BAC98EF254D2C90008F4259C9466E2D44F562B9C" : 0,
+    "1FB75A11E8FC33FCB5DB4C20DBCFA8DFD967A4FF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "EAB533F6-BCD5-478E-8EAD-1B68F7653EC5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BAC98EF254D2C90008F4259C9466E2D44F562B9C" : "sns-im-ios\/",
+    "1FB75A11E8FC33FCB5DB4C20DBCFA8DFD967A4FF" : "imsdk-ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "YonyouIM",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "YonyouIM\/YonyouIM.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/outergit.yonyou.com:49622\/uap-mobile\/imsdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1FB75A11E8FC33FCB5DB4C20DBCFA8DFD967A4FF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.yonyou.com:iuap_mobile\/sns-im-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BAC98EF254D2C90008F4259C9466E2D44F562B9C"
+    }
+  ]
+}

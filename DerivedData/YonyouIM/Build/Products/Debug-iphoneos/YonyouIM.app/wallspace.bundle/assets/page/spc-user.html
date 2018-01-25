@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />	
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+<meta name="screen-orientation" content="portrait">
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+
+<body>
+	
+	<div id="usr_search_page" class="hidden">
+		<div class="header"><span class="arr-back fl"></span>搜索用户<button id="add_confirm" class="fr">添加</button></div>
+		<div class="search-area relative">
+			<form id="user_search_from">
+				<!--<button class="search-btn hidden">搜索</button>-->
+				<span class="place-holder">搜索</span>
+				<input class="input" name="user_keywords" type="search" placeholder=""/>
+				<span class="clear-btn hidden"></span>
+			</form>
+		</div>
+		<div class="title-strip">搜索结果</div>
+		<div id="user_search_result">
+		</div>
+	</div>
+	
+	<header class="clearfix">
+		<div class="refer-page ">
+			<span class="arr-back"></span>
+		</div>
+		<div class="page-title">圈子用户</div>
+	</header>
+	<div class="bd-main spaces-page">
+			<div class="">
+				<ul class="usr-list">
+					<li id="add_usr_btn">
+						<span style="position: relative;border: 1px dashed #757575; width: 30px;height: 30px;border-radius: 20px;display: inline-block;">
+							<span style="width: 50%;position: absolute;border-top: 1px solid #757575;top:50%;left: 25%;">
+								
+							</span>
+							<span style="height: 50%;position: absolute;border-left: 1px solid #757575;top:25%;left: 50%;">
+								
+							</span>
+						</span>
+						<div>添加</div>
+					</li>
+				</ul>
+			</div>
+				
+	</div>
+	<div id="msg_box" class="hidden"></div>
+	<script type="text/javascript">
+//		var fake_data = [{"creationDate":1416911459144,"username":"rongqb.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"荣启彬"},{"creationDate":1416911459144,"username":"shicz.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"施成章"},{"creationDate":1416911459144,"username":"wangxin0.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"王鑫111"},{"creationDate":1416911459144,"username":"zhangxin0.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"3333"}]; 
+//		var data = {
+//				userList:fake_data
+//			}
+//			var template_involke = template('spc-member',data);
+//			$('.usr-list').prepend(template_involke);
+		
+		var urlStr = window.location.href;
+		var paraObj = genParaObj(urlStr.split('?')[1]);
+		var wsidCache = paraObj.wsidCache?paraObj.wsidCache:0;
+		var tem_data = {
+//			spaceId:localStorage.wsidCache
+			spaceId:wsidCache
+		}
+		callSDK('getSpaceMembers',tem_data);
+		$('input[name="user_keywords"]').on('focus',function(){
+			$(this).siblings('.place-holder').hide();
+//			$(this).siblings('.search-btn').removeClass('hidden');
+		});
+		$('#user_search_from').on('submit',function(){
+//			var fake_data = [{"creationDate":1416911459144,"username":"liuxing0.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"刘兴"},{"creationDate":1416911459144,"username":"wangxin0.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"王鑫111"},{"creationDate":1416911459144,"username":"wangxin3.app.etp","appId":"app","type":0,"etpId":"etp","name":"wangxin3"},{"creationDate":1416911459144,"username":"wangxin7.app.etp","appId":"app","type":0,"etpId":"etp","name":"wangxin7"},{"creationDate":1416911459144,"username":"wangxin9","appId":"app","type":0,"etpId":"etp","name":"wangxin"},{"creationDate":1416911459144,"username":"wangxinp.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"王欣"},{"creationDate":1416911459144,"username":"zhangxin0.baidu.metu","appId":"baidu","type":0,"etpId":"metu","name":"zhangxin0"},{"creationDate":1416911459144,"username":"zhangxin0.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"3333"},{"creationDate":1416911459144,"username":"zhangxind.udn.yonyou","appId":"udn","type":0,"etpId":"yonyou","name":"张欣"},{"creationDate":1426728712747,"username":"zhangxin0.siciyuan.yonyou","appId":"siciyuan","type":0,"etpId":"yonyou","name":"zhangxin0"},{"creationDate":1437635142775,"username":"xiaoxinhui.fei.weipeng","appId":"fei","type":0,"etpId":"weipeng","name":"xiaohui"}];
+//			var data = {userList:fake_data}
+//			var template_involke = template('user-srh-res',data);
+//			$('#user_search_result').html(template_involke);
+			
+			var data = {
+				page:'1',
+				pageSize:100,
+				username:$('input[name="user_keywords"]').val(),
+				userId:"_wallspaceJID_"
+			}
+//			window.proxy.searchWallSpaceByKey(JSON.stringify(data));
+			//隐藏键盘
+			document.activeElement.blur();
+			callSDK('searchUser',data);
+			return false;
+		});
+		/*退出圈子*/
+	$(document).on('tap','.sps-srh-res .joined',function(){
+		var data = {
+			userId:"_wallspaceJID_",
+			spaceId:$(this).attr('sid')
+		}
+		$(this).closest('li').addClass('todeal');
+//		global.proxy.quitWallSpace(JSON.stringify(data));
+		callSDK('quitWallSpace',data);
+	});
+	/*加入圈子*/
+	$(document).on('tap','.sps-srh-res .unjoined', function(){
+		var data = {
+			userId:"_wallspaceJID_",
+			spaceId:$(this).attr('sid')
+		};
+		$(this).closest('li').addClass('todeal'); 
+//		global.proxy.joinWallSpace(JSON.stringify(data));
+		callSDK('joinWallSpace',data);
+	});
+	$('input[name="user_keywords"]').on('keyup',function(){
+		$(this).siblings('.clear-btn').removeClass('hidden')
+	})
+	$('#user_search_from .clear-btn').on('tap',function(){
+		$(this).siblings('input').val('');
+	});
+	
+	$('#add_usr_btn').on('tap',function(){
+		$('#usr_search_page').removeClass('hidden');
+		setTimeout(function(){
+			$('#usr_search_page').addClass('act')
+		},50);
+	});
+	$('#usr_search_page .arr-back').on('tap',function(){
+		$('#usr_search_page').removeClass('act');
+		setTimeout(function(){$('#usr_search_page').addClass('hidden')},300)		
+	})
+	$(document).on('tap','#add_confirm',function(){
+		var userIds = new Array();
+		$('.user-srh-res li .checkbox:checked').each(function(i){
+			userIds.push($(this).siblings('.user-name').html());
+		});
+		var data = {
+//			spaceId:localStorage.wsidCache,
+			spaceId:wsidCache,
+			userIds:userIds,
+			admin:"_wallspaceJID_"
+		};
+		callSDK('batchPullInSpace',data);
+	})
+	</script>
+	
+</body>
+</html>

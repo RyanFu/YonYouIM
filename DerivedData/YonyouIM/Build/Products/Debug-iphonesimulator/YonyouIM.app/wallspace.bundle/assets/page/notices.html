@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />	
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+<meta name="screen-orientation" content="portrait">	
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+
+<body style="overflow: visible;">
+	
+	<header class="clearfix"  style="position: fixed;top:0;">
+		<div class="page-title">圈子消息</div>
+		<div class="refer-page">
+			<span class="arr-back"></span>
+		</div>
+	</header>
+	<div class="bd-main spaces-page" style="margin-top: 50px;">
+		<ul id="notice_list">
+			<!--<li>
+				<div class="pie rainbow-m">奥巴马</div>
+				<div class="r-blk">
+					<div>
+						<span class="user">奥巴马</span>
+						<span class="time fr weak">11 minutes ago</span>
+					</div>
+					<div class="weak cont">
+						回复了您：吃葡萄不吐葡萄皮
+					</div>
+				</div>
+				
+			</li>
+			<li>
+				<div class="pie rainbow-m">奥巴马</div>
+				<div class="r-blk">
+					<div>
+						<span class="user">奥巴马</span>
+						<span class="time weak fr">11 minutes ago</span>
+					</div>
+					<div class="weak cont">
+						回复了您：吃葡萄不吐葡萄皮
+					</div>
+				</div>
+				
+			</li>-->
+		</ul>
+	</div>
+	<div id="msg_box" class="hidden"></div>
+	<script type="text/javascript">
+		$(function(){
+			var data = {
+				"userId": "_wallspaceJID_",
+				"pageNo": 1,
+				"pageSize": 100
+
+			}
+			
+//			var fake_data = {"result":1,"errorMsg":"","notifyList":[{"id":"560249c0e4b00d6bb6630fa4","content":"Yy","params":{"fromUserName":"建祖","postId":"560248a1e4b00d6bb6630f9f"},"ts":1442990528,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"560248c5e4b00d6bb6630fa1","content":"DDT","params":{"fromUserName":"王鑫111","postId":"560248a1e4b00d6bb6630f9f"},"ts":1442990277,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55fa383ba85b23eadcf11bbe","content":"你是谁","params":{"fromUserName":"荣启彬","postId":"55fa37efa85b23eadcf11bb5"},"ts":1442461755,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55f9191da85b01da686237e1","content":"建祖申请加入圈子[封闭jingzz2](55f91903a85b01da686237dd)","ts":1442388253,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":2,"wsId":"55f91903a85b01da686237dd","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f9191ca85b01da686237df","wsId":"55f91903a85b01da686237dd"}},{"id":"55f7c653a85bcf89a91f6c3c","content":"系统通知:您被管理员加到jdn(55eea692e4b0e460905a9826) 圈子了，赶紧来看看吧！","ts":1442301523,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55eea692e4b0e460905a9826","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f7c653a85bcf89a91f6c3b","wsId":"55eea692e4b0e460905a9826"}},{"id":"55f7c5d2a85bcf89a91f6c33","content":"系统通知:您被管理员加到jdn(55eea692e4b0e460905a9826) 圈子了，赶紧来看看吧！","ts":1442301394,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55eea692e4b0e460905a9826","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f7c5d2a85bcf89a91f6c32","wsId":"55eea692e4b0e460905a9826"}},{"id":"55f7bb9fe4b03cc53825737d","content":"系统通知:您被管理员加到lhclhc(55eea0a0e4b07f6975ea25a9) 圈子了，赶紧来看看吧！","ts":1442298783,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55eea0a0e4b07f6975ea25a9","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f7bb9fe4b03cc53825737b","wsId":"55eea0a0e4b07f6975ea25a9"}},{"id":"55f7b14fe4b00ede2bd8c7c0","content":"3333申请加入圈子privatespacebyYjz(55f15952e4b07f6975ea2800)","ts":1442296143,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":2,"wsId":"55f15952e4b07f6975ea2800","params":{"fromUserId":"zhangxin0.udn.yonyou","applyId":"55f7b14ee4b00ede2bd8c7be","wsId":"55f15952e4b07f6975ea2800"}},{"id":"55f7b079e4b03cc538257351","content":"系统通知:您被管理员加到lhc(55eea05de4b07f6975ea25a7) 圈子了，赶紧来看看吧！","ts":1442295929,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55eea05de4b07f6975ea25a7","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f7b079e4b03cc538257350","wsId":"55eea05de4b07f6975ea25a7"}},{"id":"55f7af9ee4b03cc538257347","content":"系统通知:您被管理员加到111(55f67d1ee4b026378fa74abe) 圈子了，赶紧来看看吧！","ts":1442295710,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55f67d1ee4b026378fa74abe","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f7af9ee4b03cc538257346","wsId":"55f67d1ee4b026378fa74abe"}},{"id":"55f159afe4b07f6975ea2804","content":"王鑫111申请加入圈子privatespacebyYjz(55f15952e4b07f6975ea2800)","ts":1441880495,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":2,"wsId":"55f15952e4b07f6975ea2800","params":{"fromUserId":"wangxin0.udn.yonyou","applyId":"55f159afe4b07f6975ea2802","wsId":"55f15952e4b07f6975ea2800"}},{"id":"55f14b6ae4b057622f6bb2f6","content":"系统通知:您被管理员加到codefarmer(55f147e1e4b057622f6bb2f2) 圈子了，赶紧来看看吧！","ts":1441876842,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":1,"wsId":"55f147e1e4b057622f6bb2f2","params":{"fromUserId":"yangjz0.udn.yonyou","applyId":"55f14b6ae4b057622f6bb2f4","wsId":"55f147e1e4b057622f6bb2f2"}},{"id":"55ee399ee4b07f6975ea2558","content":"vbhj<br>","params":{"fromUserName":"hippo","postId":"55ed6ecce4b0196b75b50eb7"},"ts":1441675678,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ee34eae4b07f6975ea2552","content":"<img src=\\\"..\/img\/face\/kl_thumb.gif\\\" class=\\\"face-pic\\\"><img src=\\\"..\/img\/face\/kl_thumb.gif\\\" class=\\\"face-pic\\\">","params":{"fromUserName":"hippo","postId":"55ed3f49e4b0196b75b508e7"},"ts":1441674474,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed7328e4b0196b75b50ec0","content":"&lt;h1&gt;哈哈！&lt;\/h1&gt;","params":{"fromUserName":"建祖","postId":"55ed718ae4b0196b75b50eb9"},"ts":1441624872,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed7196e4b0196b75b50ebb","content":"&lt;h1&gt;哈哈！&lt;\/h1&gt;","params":{"fromUserName":"建祖","postId":"55ed718ae4b0196b75b50eb9"},"ts":1441624470,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed6e66e4b0196b75b50eb5","content":"&lt;h1&gt;哈哈！&lt;\/h1&gt;","params":{"fromUserName":"建祖","postId":"55ed6e47e4b0196b75b50eb3"},"ts":1441623654,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed6df0e4b0196b75b50eb1","content":"<img src=\"..\/img\/face\/tza_thumb.gif\" class=\"face-pic\">","params":{"fromUserName":"建祖","postId":"55ed6d4be4b0196b75b50eab"},"ts":1441623536,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed6d76e4b0196b75b50ead","content":"&lt;h1&gt;哈哈！&lt;\/h1&gt;","params":{"fromUserName":"建祖","postId":"55ed6d4be4b0196b75b50eab"},"ts":1441623414,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed6aefe4b0196b75b50ea8","content":"&amp;lt;h1&amp;gt;哈哈&amp;lt;\/h1&amp;gt;","params":{"fromUserName":"建祖","postId":"55ed3f49e4b0196b75b508e7"},"ts":1441622767,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ed6ab5e4b0196b75b50ea5","content":"&lt;img src=\"..\/img\/face\/laugh.gif\" class=\"face-pic\"&gt;","params":{"fromUserName":"建祖","postId":"55ed3f49e4b0196b75b508e7"},"ts":1441622709,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ecf70ce4b0196b75b50717","content":"&lt;script&gt;alert(\"这是一个脚本\")&lt;\/script&gt;","params":{"fromUserName":"荣启彬","postId":"55ec0ccde4b03f8f5d84676e"},"ts":1441593100,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ec20f1e4b03f8f5d846787","content":"Hands up!","params":{"fromUserName":"建祖","postId":"55ec00a4e4b03f8f5d846733"},"ts":1441538289,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55ec1a93e4b03f8f5d84677a","content":"Damn it!","params":{"fromUserName":"建祖","postId":"55ec0ccde4b03f8f5d84676e"},"ts":1441536659,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e4076ee4b0a2b217c4f363","content":"阿桔","params":{"fromUserName":"荣启彬","postId":"55de65f9e4b0a371dd378eac"},"ts":1441007470,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e01f39e4b0bce314ab46d4","content":"哦啦虎","params":{"fromUserName":"荣启彬","postId":"55e00a36e4b0e51076194c14"},"ts":1440751417,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e01b11e4b0bce314ab46c6","content":"😜","params":{"fromUserName":"施成章","postId":"55e00a36e4b0e51076194c14"},"ts":1440750353,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e019d3e4b0bce314ab46c1","content":"😳","params":{"fromUserName":"施成章","postId":"55e00a36e4b0e51076194c14"},"ts":1440750035,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e018d6e4b0e51076194c3d","content":"d","params":{"fromUserName":"施成章","postId":"55e00a36e4b0e51076194c14"},"ts":1440749782,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e0184ee4b0e51076194c3a","content":"f","params":{"fromUserName":"施成章","postId":"55e00a36e4b0e51076194c14"},"ts":1440749646,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e01424e4b0a371dd37939f","content":"<img src=\"..\/img\/face\/tza_thumb.gif\" class=\"face-pic\">","params":{"fromUserName":"hippo","postId":"55e00a36e4b0e51076194c14"},"ts":1440748580,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e011cee4b0e51076194c32","content":"hs","params":{"fromUserName":"建祖","postId":"55e00a36e4b0e51076194c14"},"ts":1440747982,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e00be9e4b0e51076194c2c","content":"hb","params":{"fromUserName":"建祖","postId":"55e00a36e4b0e51076194c14"},"ts":1440746473,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e00b9ee4b0e51076194c29","content":"ng","params":{"fromUserName":"建祖","postId":"55e00a36e4b0e51076194c14"},"ts":1440746398,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e00af6e4b0e51076194c23","content":"用友","params":{"fromUserName":"建祖","postId":"55e00a36e4b0e51076194c14"},"ts":1440746230,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55e00acce4b0e51076194c20","content":"也没","params":{"fromUserName":"建祖","postId":"55e00a36e4b0e51076194c14"},"ts":1440746188,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55dfd3abe4b0fb56dbab3341","content":"😊","params":{"fromUserName":"施成章","postId":"55de6603e4b0a371dd378ead"},"ts":1440732075,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55de6fb3e4b0a371dd37925c","content":"您","params":{"fromUserName":"施成章","postId":"55de660be4b0a371dd3790ed"},"ts":1440640947,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55dd8ab6e4b0a371dd378d69","content":"234234","params":{"fromUserName":"hippo","postId":"55dc7230e4b0a371dd378b46"},"ts":1440582326,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0},{"id":"55dd78bbe4b0a371dd378d46","content":"Gdg","params":{"fromUserName":"建祖","postId":"55dad54ce4b0a371dd378940"},"ts":1440577723,"toUser":"yangjz0.udn.yonyou","isViewed":0,"notifyType":0}]};
+//			window.JSFN.getNotifyListCallback(fake_data);
+			callSDK("getNotifyList",data);
+			$('#notice_list').on('click','li',function(){
+				var notifyType = $(this).attr('notifyType');
+				//alert(notifyType);
+//				localStorage.clear();
+				if(0==notifyType){//alert(0);
+//					localStorage.setItem('notice_type',notifyType);
+//					localStorage.setItem('notice_pid',$(this).attr('pid'));
+//					console.log(localStorage.getItem('notice_type'));
+					location.href="notice-detail.html?noticeType="+notifyType+"&noticePid="+$(this).attr('pid');
+//					localStorage.setItem('notice_type',notifyType);
+//					localStorage.setItem('notice_pid',$(this).attr('pid'));
+//					console.log(localStorage.getItem('notice_type'));
+//					location.href="notice-detail.html";
+				}else if(1==notifyType){//alert(1);
+//					localStorage.setItem('cur_space_id',$(this).attr('wsid'));
+					//alert("0000"+localStorage.cur_space_id)
+					location.href="index.html?curSpaceId="+$(this).attr('wsid');
+				}else if(2==notifyType){//alert(2);
+					localStorage.setItem('notice_type',notifyType);
+					localStorage.setItem('notice_apply_id',$(this).attr('applyid'));
+					localStorage.setItem('notice_cont',$(this).find('.cont').html());
+					requestStr = "noticeType="+notifyType+"&noticeApplyId="+$(this).attr('applyid')+"&noticeCont="+$(this).find('.cont').html();
+					location.href="notice-detail.html?"+encodeURI(requestStr);
+				}
+				
+			});
+		});
+	</script>
+	
+</body>
+</html>

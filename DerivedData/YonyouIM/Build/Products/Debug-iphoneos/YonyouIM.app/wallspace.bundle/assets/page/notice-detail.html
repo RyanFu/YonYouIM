@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />	
+<!--<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="screen-orientation" content="portrait">
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+
+<body>
+	
+	<header class="clearfix">
+		<div class="fl refer-page">
+			<span class="arr-back"></span>
+		</div>
+		<div class="page-title"></div>
+	</header>
+	<div class="bd-main nofify-detail">
+		<div class="space-link clearfix"><div class="pie"></div><div class="space-name"></div></div>
+		<div id="wrapper" style="margin-top: 70px;">
+			<div class="post-detail">
+			  					
+			</div>	
+		</div>	
+	</div>
+	<div id="msg_box" class="hidden"></div>
+	<footer class="hidden face-node">
+		<div style="padding: 10px;" id="reply-ops">
+			<button id="send_btn" style="float: right;" class="send_btn"></button>
+			<span style="float: right;padding: 13px; color: white;margin-right: 10px;" class="add-face"></span>
+			<p style="margin-left: 4em; margin-right: 5em;">
+				<div contenteditable="true" type="text" name="replycont" maxlength="50" class="replycont face-allow" autofocus="autofocus"></div>
+				<!--<input style="width: 100%;" type="text" name="replycont" maxlength="50" class="replycont" autofocus="autofocus">-->
+			</p>
+		</div>
+		<div class="faces-container" style="width:100%;overflow: scroll;">
+			
+		</div>
+	</footer>
+	<script type="text/javascript">
+		function loaded() {
+		
+			window.noticeScroll = new IScroll('#wrapper',{ mouseWheel: true });
+		
+		}
+		document.addEventListener('DOMContentLoaded', loaded, false);
+//		alert(localStorage.getItem('notice_type'))
+		$(function(){
+			var urlStr = window.location.href;
+			var paraObj = genParaObj(decodeURI(urlStr.split('?')[1]));
+			if(paraObj.noticeType==0){
+				$('.page-title').html('发言详情');
+			callSDK('getJID');
+			var data={
+				userId:"_wallspaceJID_",
+				postId:paraObj.noticePid
+			}
+			callSDK('getSingleDynamic',data);
+//			var fake_data = {"id":"55dc5f1de4b0a371dd378b1a","sid":"0","replyList":[{"id":"55dc5f9de4b0a371dd378b1b","userFrom":"wangxin0.udn.yonyou","ts":1440505757,"_id":{"timestamp":1440505757,"timeSecond":1440505757,"new":false,"time":1440505757000,"machine":-458185871,"inc":-583562469,"date":1440505757000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"hkiyb","nickNameFrom":"王鑫111"},{"id":"55dc61aee4b0a371dd378b23","userFrom":"wangxin0.udn.yonyou","ts":1440506286,"_id":{"timestamp":1440506286,"timeSecond":1440506286,"new":false,"time":1440506286000,"machine":-458185871,"inc":-583562461,"date":1440506286000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"酷我","nickNameFrom":"王鑫111"},{"id":"55dc61c5e4b0a371dd378b26","userFrom":"wangxin0.udn.yonyou","ts":1440506309,"_id":{"timestamp":1440506309,"timeSecond":1440506309,"new":false,"time":1440506309000,"machine":-458185871,"inc":-583562458,"date":1440506309000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"咯的","nickNameFrom":"王鑫111"},{"id":"55dc6d2be4b0a371dd378b3c","userFrom":"zhangxin0.udn.yonyou","ts":1440509227,"_id":{"timestamp":1440509227,"timeSecond":1440509227,"new":false,"time":1440509227000,"machine":-458185871,"inc":-583562436,"date":1440509227000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"hhh","nickNameFrom":"3333"},{"id":"55e31125e4b02e9c0a6a08e9","userFrom":"wangxin0.udn.yonyou","ts":1440944421,"_id":{"timestamp":1440944421,"timeSecond":1440944421,"new":false,"time":1440944421000,"machine":-458215780,"inc":174721257,"date":1440944421000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"滚","nickNameFrom":"王鑫111"},{"id":"55e31136e4b02e9c0a6a08ec","userFrom":"wangxin0.udn.yonyou","ts":1440944438,"_id":{"timestamp":1440944438,"timeSecond":1440944438,"new":false,"time":1440944438000,"machine":-458215780,"inc":174721260,"date":1440944438000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"去屎","nickNameFrom":"王鑫111"},{"id":"55e66d61e4b0fa7d32070328","userFrom":"wangxin0.udn.yonyou","ts":1441164641,"_id":{"timestamp":1441164641,"timeSecond":1441164641,"new":false,"time":1441164641000,"machine":-458163587,"inc":839320360,"date":1441164641000},"nickNameTo":"3333","userTo":"zhangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"Shit","nickNameFrom":"王鑫111"},{"id":"55e66db2e4b0fa7d3207032c","userFrom":"wangxin0.udn.yonyou","ts":1441164722,"_id":{"timestamp":1441164722,"timeSecond":1441164722,"new":false,"time":1441164722000,"machine":-458163587,"inc":839320364,"date":1441164722000},"nickNameTo":"王鑫111","userTo":"wangxin0.udn.yonyou","pid":"55dc5f1de4b0a371dd378b1a","cont":"Piss off","nickNameFrom":"王鑫111"}],"username":"wangxin0.udn.yonyou","ts":1440505629,"docType":0,"nickName":"王鑫111","praiseUsers":["_wallspaceJID_","litfb.udn.yonyou"],"documents":[],"remoteUrl":"","remoteAbstract":"","cont":"yyv","praiseNickNames":["hippo","_wallspaceJID_"]}
+//			var data = {post:fake_data};
+//			var template_involke = template('notice-detail',data);
+//			$('.post-detail').html(template_involke);
+//			window.noticeScroll.refresh()
+			}else if(paraObj.noticeType==2){
+				$('.post-detail').addClass('apply');
+				var curApplyId = paraObj.noticeApplyId;
+				$('.space-link').addClass('hidden');
+				$('#wrapper').css('margin-top','40px');
+//				alert(localStorage.notice_cont);
+				var name = paraObj.noticeCont.split('申请')[0];
+				var appendStr = '<div class="l-blk"><div class="pie rainbow-'+
+					getFirstLetter(name)+'">'+name.substr(name.length-2,2)+
+					'</div></div><div class="r-blk"><div>'+name+'</div><div clearfix>申请'+paraObj.noticeCont.split('申请')[1]+
+					'<div class="operations clearfix"><div class="opt1 hidden fr"><span>同意</span><span>拒绝</span></div><div class="hidden opt2 fr weak">该申请已被您或其他管理员处理</div></div></div></div>'
+				
+				$('.post-detail').html(appendStr);
+				var data = {
+					applyId:curApplyId
+				}
+//				var fake_data = {"result":1,"errorMsg":"","sur":{"id":"55f18073e4b07f6975ea283a","userName":"吴德伦","spaceId":"55f147e1e4b057622f6bb2f2","ts":1441890419,"status":1,"userId":"wudl.udn.yonyou"}};
+//				window.JSFN.checkApplyStatusCallback(fake_data)
+				callSDK('checkApplyStatus',data);
+				$('.page-title').html('圈子申请审批');
+			}
+//			localStorage.clear()
+//			localStorage.notice_type=null;
+			
+			$(document).on('tap','.operations .opt1 span',function(){
+				var arr = new Array();
+				arr.push(curApplyId)
+				var data = {
+					userId:"_wallspaceJID_",
+					applyId:arr
+				}
+				if($('.operations .opt1 span').index($(this))==0){
+					callSDK('batchAgreeApplies',data);
+				}else{
+					callSDK('batchDenyApplies',data);
+				}
+			});
+		})
+		
+		var rep_para= {}; //参数
+//	var rep_para= new Array(); //参数
+	var $footer=$("footer");
+//	var $reply_input = $("input[name='replycont']"); //输入框
+	var $reply_input = $("div[name='replycont']"); //输入框
+	window.isCanReply=true;
+
+	
+
+	function readyForReply(post,status,reply){
+		if(!window.isCanReply){
+			return;
+		}
+		clearState();
+		if(reply){
+			reply.addClass('reply-item-back');
+		}
+		$reply_input.val("").trigger('focus');
+		$footer.removeClass('hidden');
+		post.addClass('ing');
+		var userfrom = "_wallspaceJID_";
+		var data = {
+			reply:{
+				pid : post.attr('id'),
+				userFrom:'_wallspaceJID_'
+			}
+		}
+		switch(status){
+			case 0: replyuid  = post.find('.p-auth .u-name').attr('uid');
+					replyName = post.find('.p-auth .u-name').html();
+				  break;
+			case 1: replyuid = reply.attr('fromid');
+					replyName = reply.find('.reply').html();
+				  break;
+			default:break;
+		}
+		rep_para = data;
+//		readyForParam(id,fid,replyid,replyuid,replyname);
+		window.cache.replyuid = replyuid;
+		window.cache.replyName = replyName;
+		$reply_input.attr('placeholder','回复：'+replyName);
+	}
+
+	function readyForParam(id,fid,replyid,replyuid,replyname){
+		rep_para['id']=id;
+		rep_para['feed_id']=fid;
+		rep_para['feed_type']=15;
+		rep_para['feed_reply_to_id']=replyid;
+		rep_para['feed_reply_obj_mid']=replyid;
+		rep_para['feed_reply_to_mid']=replyuid;
+		rep_para['feed_reply_to_name']=replyname;
+	}
+
+
+	/**
+	* 回复
+	*/
+	$("#send_btn").on("tap",function(){
+//		var reply_cont = $reply_input.val();
+		var reply_cont = $reply_input.html();
+		window.cache.replyCont = reply_cont;
+		if(reply_cont.length == 0 || !$(".post-item.ing")){
+			if(reply_cont.length == 0){
+				$reply_input.trigger('focus');
+			}
+			return;
+		}
+
+		window.isCanReply=false;
+		rep_para.reply.cont = $(this).siblings('.replycont').html().replace(/"/g,'\\"');
+		rep_para.reply.userTo = window.cache.replyuid;
+		$reply_input.html('');
+//		window.proxy.addTextReply(JSON.stringify(rep_para));
+		callSDK("addTextReply",rep_para);
+		$footer.addClass('hidden');
+
+	});
+	$(document).on('tap',function(e){
+		var $target = $(e.target);
+		if(!$(e.target).closest('.switch-tap').length&& 
+		!$(e.target).closest('ul').hasClass('drop-menu')){
+			$('.drop-menu').addClass('hidden');
+		}
+		if(!$target.closest('.face-wraper').length && !$target.hasClass('add-face')){
+			$('#sendmesspage').find('.faces-container').html('');
+		}
+//		
+		$target.hasClass("reply-btn") ? readyForReply($target.closest(".post-item"),0) : $target.closest(".reply-item").length ? readyForReply($target.closest(".post-item"),1,$target) :(function(){ if(!($target.hasClass("replycont")||($target.closest('#reply-ops').length)||$target.hasClass('add-face')||$target.closest('div').hasClass('face-list'))){$footer.addClass('hidden');clearState();}})();
+//		$target.hasClass("reply-btn") ? alert() : $target.closest(".reply-item").length ? alert() :(function(){ if(!($target.hasClass("replycont")||($target.closest('#reply-ops').length)||$target.hasClass('add-face')||$target.closest('div').hasClass('face-list'))){$footer.addClass('hidden');clearState();}})();
+	});
+	
+	$('.add-face').on('tap',function(){
+		$target_face_area = $(this).closest('.face-node').find('.faces-container');
+		if(!$target_face_area.find('.face-wraper').length){
+			$target_face_area.append(face_list);
+		}
+		$('.face-list ul').width(window_width);
+		$('.msg-extra').addClass('hidden');
+	});
+	
+	var face_page = 0;
+	$(document).on('swipeLeft','.face-list',function(){
+		if(face_page>=3)return;
+		face_page++;
+		$(this).css('marginLeft',-face_page*window_width+'px')
+	});
+	$(document).on('swipeRight','.face-list',function(){
+		if(face_page<=0)return;
+		face_page--;
+		$(this).css('marginLeft', -face_page*window_width+'px')
+	});
+	
+	/*表情*/
+	$(document).on('tap','.face-list img',function(){
+		var $tem_img = $(this).clone();
+		$tem_img.addClass('face-pic')
+		$(this).closest('.face-node').find('.face-allow').append($tem_img);
+	});
+	window.clearState = function(){
+		$(".post-item.ing").removeClass("ing");
+		$('.reply-item.reply-item-back').removeClass('reply-item-back');
+	}
+	$(document).on('tap','.space-link',function(){
+//		window.switchSpace($(this).attr('wsid'),$(this).find('.space-name').html());
+//		localStorage.cur_space_id =$(this).attr('wsid');
+		//localStorage.cur_space_name =$(this).find('.space-name').html();
+		location.href="index.html?curSpaceId="+$(this).attr('wsid');;
+	})
+	</script>
+	
+</body>
+</html>

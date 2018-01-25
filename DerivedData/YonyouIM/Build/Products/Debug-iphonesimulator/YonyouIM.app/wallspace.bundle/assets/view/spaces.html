@@ -1,0 +1,39 @@
+		<div class="title-strip">我的圈子</div>
+		<ul class="my-spc">
+			{{each space_list.mine as value_1 i}}
+				<li class="clearfix {{value_1.admins | isadmin}}">
+					<div class="l-blk">
+						<div class="space-logo rainbow-{{value_1.name | firstLetter}}">{{value_1.name | cutName:2}}</div>
+					</div>
+					<div  class="r-blk clearfix">
+						{{if value_1.id!=0}}
+						<div class="joined join-sts fr" sid ="{{value_1.id}}" spcType = "{{value_1.type}}"></div>
+						{{/if}}
+						<div class="space-name">{{value_1.name}}</div>
+						<div class="space-brief">{{value_1.intro}}</div>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+		<div class="title-strip">所有圈子</div>
+		<ul class="all-spc">
+			{{each space_list.other as value_2 i}}
+				<li class="clearfix {{value_2.admins | isadmin}}">
+					<div class="l-blk">
+						<div class="space-logo rainbow-{{value_2.name | firstLetter}}">{{value_2.name | cutName:2}}</div>
+					</div>
+					<div  class="r-blk clearfix">
+						{{if value_2.state }}
+						<div class="joined join-sts fr" sid ="{{value_2.id}}"></div>
+						{{else}}
+						<div class="unjoined join-sts fr" sid ="{{value_2.id}}" spcType = "{{value_2.type}}"></div>
+						{{/if}}
+						<div><span class="space-name">{{value_2.name}}</span><span class="time"></span></div>
+						<div class="space-brief">{{value_2.intro}}</div>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+		
+		
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=0.8,user-scalable=no">-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="screen-orientation" content="portrait">
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+
+<body>
+	<input type="hidden" id="spc_id"/>
+	<div id="space_apply" class="space-info hidden">
+		<div class="header"><span class="arr-back fl"></span>申请加入圈子</div>
+		<form>
+			<ul>
+				<li>
+					<div><label>申请说明：</label><input type="text" name="apply_reason" placeholder="不超过50个字符"/></div>
+				</li>
+				<li class="center-align"><span class="confirm">提交</span></li>
+			</ul>
+		</form>
+	</div>
+	<div id="space_creat" class="space-info hidden">
+		<div class="header"><span class="arr-back fl"></span>创建圈子</div>
+		<form>
+			<ul>
+				<li>圈子头像<span style="display: inline-block;border: solid 22px #B3610D;border-radius: 25px;left: 100%;position: relative; margin-left: -110px;"></span></li>
+				<li>
+					<div><label>圈子名称</label><input type="text" name="space_name" placeholder="中文数字字母均可"/></div>
+					<div><label>圈子简介</label><input type="text" name="space_intro" placeholder="不超过50个字符"/></div>
+				</li>
+				<li><span>是否公开</span><input name="space_auth" id="space_auth" value="1" type="checkbox" checked/><label for="" id="auth_label" class="checked"><span class="fake-radio"></span></label></li>
+				<li class="center-align"><span class="confirm">创建</span></li>
+			</ul>
+		</form>
+	</div>
+	<div id="space_edit"  class="hidden space-info">
+		<div class="header"><span class="arr-back fl"></span>管理圈子</div>
+		<form>
+			<ul>
+				<li>圈子头像
+					<span class="space-pic" id="space-pic">
+					</span>
+				<!--<span style="display: inline-block;border: solid 25px #B3610D;border-radius: 25px;left: 100%;position: relative; margin-left: -110px;">头像</span>--></li>
+				<li>
+					<div><label>圈子名称</label><input name="new_space_name" /></div>
+					<div><label>圈子简介</label><input name="new_space_intro"/></div>
+				</li>
+				<li><span>是否公开</span><input name="new_space_auth" id="new_space_auth" value="1" type="checkbox" checked/><label for="" id="new_auth_label"><span class="fake-radio"></span></label></li>
+				<li id="view_member"><label>圈子成员</label></li>
+				<li class="center-align"><div class="spc-save">保存修改</div>
+				<li class="center-align"><div class="spc-dismiss">解散圈子</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<header class="clearfix">
+		<div class="refer-page ">
+			<span class="arr-back"></span>
+		</div>
+		<div class="page-title">圈子</div>
+		<div id="sps_oper_btn" class="mark-plus"><span></span><span></span></div>
+		<ul class="sps-operations hidden" >
+			<li id="new_space">创建圈子</li>
+			<li><a href="sps-search.html">搜索圈子</a></li>
+			<li id="space_edit_btn">管理圈子</li>
+		</ul>
+	</header>
+	<div id="wrapper">
+		<div id="scroller" style="transition-property: transform; -webkit-transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, -51px) scale(1) translateZ(0px);">
+			<!--<div id="pullDown" class="">
+				<span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+			</div>-->
+			<div class="bd-main spaces-page" style="">
+				<div id="allspaces"></div>
+			</div>
+			<!--<div id="pullUp" style="padding-bottom: 10px;">
+				<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+			</div>-->
+		</div>
+	</div>
+	<!--<div id="space_creat" class="space-info">
+		<div class="header"><span class="arr-back fl"></span>创建圈子</div>
+		<form>
+			<ul>
+				<li>圈子头像<span style="display: inline-block;border: solid 25px #B3610D;border-radius: 25px;left: 100%;position: relative; margin-left: -90px;"></span></li>
+				<li>
+					<div><label>圈子名称</label><input type="text" name="space_name" placeholder="中文数字字母均可"/></div>
+					<div><label>圈子简介</label><input type="text" name="space_intro" placeholder="不超过50个字符"/></div>
+				</li>
+				<li><span>是否公开</span><input name="space_auth" id="space_auth" value="1" type="checkbox" checked="checked"/><label for="space_auth" id="auth_label"><span class="fake-radio"></span></label></li>
+				<li class="center-align"><span class="confirm">创建</span></li>
+			</ul>
+		</form>
+	</div>-->
+	<div id="msg_box" class="hidden"></div>
+	<script type="text/javascript" src="../js/modules/space.js"></script>
+	<script type="text/javascript">
+		function defaultAvatar(self){
+			$(self).attr('src', '../img/avatar_default.jpg');
+		}
+	</script>
+
+</body>
+</html>

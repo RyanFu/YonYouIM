@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=0.8,maximum-scale=0.8,minimum-scale=0.8,user-scalable=no">-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta name="screen-orientation" content="portrait">
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+</head>
+<body style="overflow: visible;">
+	<script >
+	var view_width = document.documentElement.clientWidth,
+		dpratio = window.devicePixelRatio	;
+	if(view_width==360 && dpratio==3){
+		var $viewport_conf = $('meta[name="viewport"]');
+	}
+//	alert("555>>>>>>>>>>>>>"+document.documentElement.clientWidth+"  "+window.devicePixelRatio)
+//	alert(navigator.userAgent+"   "+navigator.appName)
+	var urlStr = window.location.href;
+	var curSpaceId;
+	var paraStr = urlStr.split('?');
+	if(paraStr.length>1){
+		var paraObj = genParaObj(urlStr.split('?')[1]);
+		curSpaceId = paraObj.curSpaceId?paraObj.curSpaceId:0;
+	}else{
+		curSpaceId = 0;
+	}
+	</script>
+		<div id="sendmesspage" class="face-node hidden">
+		   <div class="clearfix head">
+			   <a href="javascript:;" class="fl exit" ></a>
+			   <span class="fl" style="font-size:14px"></span>
+			   <!--<button class="fr sendmessage" type="button" onclick="sendmessage(document.getElementById('messagefield').value,2,1);document.getElementById('sendmesspage').style.left='100%';document.getElementById('messagefield').value='';">发布</button>-->
+			   <button class="fr sendmessage" type="button" id="publish_btn">发布</button>
+		   </div>
+						   <div class="messagediv">
+							   <div name="messagefield" id="messagefield" contenteditable="true" style="text-align: left;" class="messagefield face-allow" rows="1">
+							   </div><span class="place-holder">圈子记录...</span>
+						   </div>
+			<div id="send_msg_bd" style="overflow-y: hidden;">
+				<div class="scroll-bd" style="padding-bottom: 40px;">
+						   <div class="photodiv">
+								<div id="imgcont" class="clearfix" style="margin-top: 10px;"><div class="clearfix"></div></div>
+						   </div>
+					   		<p class="pic-types clearfix">
+					   			<button id="catchphoto" class="fl"></button>
+						   		<label for="catchlocalpic" id="publish_face" class="relative fl">
+								<!--<input id="tem_test" type="file" multiple="multiple">-->
+						   		<span class="add-face"></span>
+						   		</label>
+						   	</p>	
+				</div>			
+			   	<div class="forpost faces-container" style="width:100%;overflow: scroll;">
+				
+				</div>
+			</div>	
+				
+	   </div>
+		   <!--<div class="msg-extra hidden"><span class="add-face"></span></div>-->
+		   	<div class="forpost faces-container" style="width:100%;overflow: scroll;"></div>
+		   
+		</div>
+		<script>
+//			if(!window.proxy){
+//				$('.pic-types').find('button').remove();
+//				$('.pic-types').append($('<label id="photo_label" for="ios_photo"></label><label id="ios_pic_label" for="ios_loc_pic"><span></span><span></span></label>'))
+////				$('.pic-types').append($('<label id="photo_label" for="ios_photo"></label><input id="ios_photo" type="file" accept="image/*" capture="camera"/><label id="ios_pic_label" for="ios_loc_pic"><span></span><span></span></label><input id="ios_loc_pic" type="file" accept="image/*" multiple/>'))
+//			}
+		</script>
+		<header class="clearfix" style="position: fixed;">
+				<div class="dropdown switch-space"> 
+						<div class="switch-tap page-title"><span id="cur_spc_name"></span>
+						</div>
+						<div id="spc-wrapper">
+								<ul class="drop-menu hidden">
+									<li><a id="jump">管理圈子...</a></li>
+								</ul>
+						</div>
+				</div>
+			<div class="refer-page">
+				<span class="arr-back"></span>
+			</div>
+			<a href="javascript:;"  style="margin: 2px 5px 0 0;" id="sendmessage">
+				<!--<img src="../img/camera.png" width="20"/>-->
+			</a>
+		</header>
+	<div id="wrapper" style="padding-bottom: 15px;overflow: visible;position: relative;">
+		<div id="scroller" style="-webkit-backface-visibility: hidden;-webkit-transform-style: preserve-3d;-webkit-transform: translate3d(0,0,0);">
+			<div id="pullDown" class="">
+				<span class="pullDownIcon"></span><span class="pullDownLabel block center-align"><img style="width:25px" src="../img/loading.GIF"></span>
+			</div>
+			<div id="convs_bd">
+				<ul class="bd-main" id="thelist">
+
+				</ul>
+				<ul class="bd-main hidden" id="notMore">
+				</ul>
+			</div>
+			<div id="pullUp" style="padding-bottom: 10px;">
+				<span class="pullUpIcon"></span><span class="pullUpLabel block center-align"><!--<img style="width:25px" src="../img/loading.GIF">--></span>
+			</div>
+		</div>
+	</div>
+	<div id="detector"></div>
+	<footer class="hidden face-node" style="position: fixed;">
+		<div style="padding: 7px 10px;" id="reply-ops">
+			<div contenteditable="true" type="text" name="replycont" maxlength="50" class="replycont face-allow" autofocus="autofocus"></div>
+			<!--<input style="width: 100%;" type="text" name="replycont" maxlength="50" class="replycont" autofocus="autofocus">-->
+			<button style="padding: 14px; color: white;" class="add-face"></button>
+			<button id="send_btn" class="send_btn"></button>
+		</div>
+		<div class="faces-container" style="width:100%;overflow: scroll;">
+			
+		</div>
+	</footer>
+	<div id="msg_box" class="hidden"></div>
+	<div id="pic_viewer" class="hidden">
+	</div>
+	<div id="pic_model" class="hidden"> 
+		<div class="cont">
+			<div class="options">
+				<div id="ios_pic">从相册选择</div>
+				<div id="ios_photo">拍照</div>
+			</div>
+			<div class="cancel">取消</div>
+		</div>
+	</div>	
+
+	<script type="text/javascript" src="../js/modules/index.js"></script>
+
+	<script type="text/javascript">
+		function defaultAvatar(self){
+			$(self).attr('src', '../img/avatar_default.jpg');
+		}
+		function test(){
+			alert();
+		}
+	</script>
+</body>
+</html>

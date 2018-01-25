@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />	
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+<meta name="screen-orientation" content="portrait">	
+<title>朋友圈</title>
+<link type="text/css" href="../css/common-small.css" rel="stylesheet">
+<link type="text/css" href="../css/style-small.css" rel="stylesheet">
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="../js/template/template.js"></script>
+<script type="text/javascript" src="../js/require.js"></script>
+<script type="text/javascript" src="../js/iscroll-lite.js"></script>
+<script type="text/javascript" src="../js/getFirstLetter.js" ></script>
+<script type="text/javascript" src="../js/modules/common.js"></script>
+<script type="text/javascript" src="../js/modules/JSFN.js"></script>
+<!--<script type="text/javascript" src="../js/debuggap.js"></script>-->
+
+<body>
+	<div id="space_apply" class="space-info hidden">
+		<div class="header"><span class="arr-back fl"></span>申请加入圈子</div>
+		<form>
+			<ul>
+				<li>
+					<div><label>申请说明：</label><input type="text" name="apply_reason" placeholder="不超过50个字符"/></div>
+				</li>
+				<li class="center-align"><span class="confirm">提交</span></li>
+			</ul>
+		</form>
+	</div>
+	<header class="clearfix">
+		<div class="refer-page ">
+			<span class="arr-back"></span>
+		</div>
+		<div class="page-title">搜索圈子</div>
+	</header>
+	<div class="bd-main spaces-page">
+		<div class="search-area relative">
+			<form id="sps_search_from">
+				<!--<button class="search-btn hidden">搜索</button>-->
+				<span class="place-holder">搜索</span>
+				<input class="input" name="space_keywords" type="search" placeholder=""/>
+				<span class="clear-btn hidden"></span>
+			</form>
+		</div>
+		<div class="title-strip">搜索结果</div>
+		<div id="sps_search_result">
+		</div>
+	</div>
+	<div id="msg_box" class="hidden"></div>
+	<script type="text/javascript">
+		function defaultAvatar(self){
+			$(self).attr('src', '../img/avatar_default.jpg');
+		}
+		$('input[name="space_keywords"]').on('focus',function(){
+			$(this).siblings('.place-holder').hide();
+//			$(this).siblings('.search-btn').removeClass('hidden');
+		});
+		$('#sps_search_from').on('submit',function(){
+//			$('#sps_search_result').html('hehe!!!!');
+			var data = {
+				pageNo:'1',
+				key:$('input[name="space_keywords"]').val(),
+				userId:"_wallspaceJID_"
+			}
+//			window.proxy.searchWallSpaceByKey(JSON.stringify(data));
+			//隐藏键盘
+			document.activeElement.blur();
+			callSDK('searchWallSpaceByKey',data);
+			return false;
+		});
+		/*退出圈子*/
+	$(document).on('tap','.sps-srh-res .joined',function(){
+		var data = {
+			userId:"_wallspaceJID_",
+			spaceId:$(this).attr('sid')
+		}
+		$(this).closest('li').addClass('todeal');
+//		global.proxy.quitWallSpace(JSON.stringify(data));
+		callSDK('quitWallSpace',data);
+	});
+	/*加入圈子*/
+	$(document).on('tap','.sps-srh-res .unjoined', function(){
+		var data = {
+			userId:"_wallspaceJID_",
+			spaceId:$(this).attr('sid')
+		};
+		$(this).closest('li').addClass('todeal'); 
+//		global.proxy.joinWallSpace(JSON.stringify(data));
+		if($(this).attr('spcType')==1){
+			callSDK('joinWallSpace',data);
+		}else{
+			window.targetWsid = $(this).attr('sid');
+			$('#space_apply').removeClass('hidden');
+			 setTimeout(function(){
+			 	$('#space_apply').addClass('act')
+			 },50);
+		}
+		//callSDK('joinWallSpace',data);
+	});
+	
+	$(document).on('tap','#space_apply .confirm',function(e){
+		var data = {
+				userId:'_wallspaceJID_',
+				spaceId:window.targetWsid
+		}
+		callSDK('applyInWallSpace',data);
+		return false;
+	});
+	
+	$('input[name="space_keywords"]').on('keyup',function(){
+		$(this).siblings('.clear-btn').removeClass('hidden')
+	})
+	$('#sps_search_from .clear-btn').on('tap',function(){
+		$(this).siblings('input').val('');
+	})
+	</script>
+	
+</body>
+</html>

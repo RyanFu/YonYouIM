@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeMemberViewController">
+            <connections>
+                <outlet property="rosterTableView" destination="UV0-gw-u75" id="Fer-CD-XMQ"/>
+                <outlet property="searchBar" destination="bKl-dU-L8N" id="H47-hL-3r3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" placeholder="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="bKl-dU-L8N">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="QnJ-Hz-fth"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="gRV-TM-gER"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UV0-gw-u75">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.9642586112" green="0.91562360529999998" blue="0.9167212844" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nfg-hC-kPw"/>
+                        <outlet property="delegate" destination="-1" id="wrG-NP-lP5"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="UV0-gw-u75" firstAttribute="top" secondItem="bKl-dU-L8N" secondAttribute="bottom" id="9CT-BT-QY1"/>
+                <constraint firstAttribute="trailing" secondItem="bKl-dU-L8N" secondAttribute="trailing" id="MRN-r1-873"/>
+                <constraint firstAttribute="bottom" secondItem="UV0-gw-u75" secondAttribute="bottom" id="Wrj-sC-QBS"/>
+                <constraint firstItem="UV0-gw-u75" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zcy-8R-lcN"/>
+                <constraint firstItem="bKl-dU-L8N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="grZ-Y0-vAs"/>
+                <constraint firstItem="bKl-dU-L8N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="laL-AC-Mx9"/>
+                <constraint firstAttribute="trailing" secondItem="UV0-gw-u75" secondAttribute="trailing" id="zCl-ir-qr5"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

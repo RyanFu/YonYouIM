@@ -1,0 +1,21 @@
+dependencies: \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMHttpUtility.m \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMHttpUtility.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMDefs.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Core/YYIMError.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYAttach.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Core/YYIMConfig.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYSettings.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMStringUtility.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFNetworking.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLRequestSerialization.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLResponseSerialization.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFSecurityPolicy.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFNetworkReachabilityManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFURLSessionManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFHTTPSessionManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Vender/AFNetworking/YMAFHTTPUploadOperationManager.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMJUMPHelper.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Entity/YYToken.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Core/YYIMLogger.h \
+  /Users/hb/project/sns-im-ios/YonyouIMSdk/YonyouIMSdk/Utility/YYIMResourceUtility.h

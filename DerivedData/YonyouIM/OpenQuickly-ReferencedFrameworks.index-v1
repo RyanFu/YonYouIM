@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>Cocoa</string>
+	<string>MetalKit</string>
+	<string>AVFoundation</string>
+	<string>CommonCrypto</string>
+	<string>EventKit</string>
+	<string>CoreLocation</string>
+	<string>ImageIO</string>
+	<string>AudioToolbox</string>
+	<string>objc</string>
+	<string>Metal</string>
+	<string>CoreData</string>
+	<string>PgyUpdate</string>
+	<string>MobileCoreServices</string>
+	<string>MAMapKit</string>
+	<string>sys</string>
+	<string>arpa</string>
+	<string>CoreTelephony</string>
+	<string>CoreImage</string>
+	<string>CoreServices</string>
+	<string>netinet6</string>
+	<string>dispatch</string>
+	<string>EventKitUI</string>
+	<string>SDWebImage</string>
+	<string>libkern</string>
+	<string>CoreText</string>
+	<string>GLKit</string>
+	<string>CoreVideo</string>
+	<string>WatchKit</string>
+	<string>Foundation</string>
+	<string>mach</string>
+	<string>QuartzCore</string>
+	<string>Security</string>
+	<string>AppKit</string>
+	<string>Bugly</string>
+	<string>netinet</string>
+	<string>net</string>
+	<string>AssetsLibrary</string>
+	<string>CFNetwork</string>
+	<string>CoreGraphics</string>
+	<string>SystemConfiguration</string>
+	<string>AMapSearchKit</string>
+	<string>QuickLook</string>
+	<string>UIKit</string>
+</array>
+</plist>
