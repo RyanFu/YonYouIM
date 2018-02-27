@@ -12,12 +12,12 @@
 #import "YYIMWallspaceHeader.h"
 
 /** default im server */
-#define DEBUG_IM_SERVER                     @"172.20.5.10"//@"172.20.8.189"//@"10.2.112.188"//@"10.2.112.58"//
+#define DEBUG_IM_SERVER                     @"stellar.yyuap.com"//@"172.20.8.189"//@"10.2.112.188"//@"10.2.112.58"//
 /** default im server port */
-#define DEBUG_IM_SERVER_PORT                5222
+#define DEBUG_IM_SERVER_PORT                5227
 #define DEBUG_IM_SERVER_SSLPORT             5223
 /** default im rest server */
-#define DEBUG_IM_REST_SERVER                @"172.20.5.10:9090"//@"172.20.8.189"//@"10.2.112.188:9090"//@"10.2.112.58:9090"//
+#define DEBUG_IM_REST_SERVER                @"im.yyuap.com"//@"172.20.8.189"//@"10.2.112.188:9090"//@"10.2.112.58:9090"//
 /** default resource server */
 #define DEBUG_RESOURCE_UPLOAD_SERVER        DEBUG_IM_REST_SERVER
 #define DEBUG_RESOURCE_DOWNLOAD_SERVER      DEBUG_IM_REST_SERVER

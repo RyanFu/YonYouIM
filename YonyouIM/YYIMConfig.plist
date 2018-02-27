@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>AppKey</key>
+    <string>youbaozhang_f</string>
+    <key>EtpKey</key>
+    <string>youbaozhang</string>
+    <key>ClientId</key>
+    <string>35b30a5a98689f7aa2c8efde5f614317</string>
+    <key>ClientSecret</key>
+    <string>CB13C174B3BFF3A8D4F1D47E752D23B7</string>
+    <key>CerName</key>
+    <string>youbaozhang</string>
+    <key>IM_SERVER_IP</key>
+    <string>none</string>
+    <key>IM_SHORT_SERVER</key>
+    <string>none</string>
+    <key>UPLOAD_FILE_SERVER</key>
+    <string>none</string>
+    <key>DOWNLOAD_FILE_SERVER</key>
+    <string>none</string>
+    <key>IM_SERVER_ENABLESSL</key>
+    <string>none</string>
+    <key>IM_SERVER_PORT</key>
+    <string>none</string>
+    <key>IM_SSL_SERVER_PORT</key>
+    <string>none</string>
+    <key>IM_RESET_SERVER_HTTPS</key>
+    <string>none</string>
+    <key>IM_REVOKE_MESSAGE</key>
+    <string>none</string>
+    <key>API_KEY</key>
+    <string>none</string>
+  </dict>
+</plist>

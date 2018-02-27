@@ -351,8 +351,8 @@
             [self.navigationController pushViewController:netMeetingNotifyViewController animated:YES];
         } else {
             ChatViewController *chatViewController = [[ChatViewController alloc] initWithNibName:nil bundle:nil];
-            [chatViewController setValue:chatId forKey:@"chatId"];
-            [chatViewController setValue:chatType forKey:@"chatType"];
+            [chatViewController setValue:@"ft9fbcrw_5cscuqdgprqkr2vpdaowk" forKey:@"chatId"];
+            [chatViewController setValue:@"chat" forKey:@"chatType"];
             [self.navigationController pushViewController:chatViewController animated:YES];
         }
     }

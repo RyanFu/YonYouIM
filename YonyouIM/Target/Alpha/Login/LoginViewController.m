@@ -111,53 +111,57 @@
 }
 
 - (IBAction)login:(id)sender {
-    NSString *account = self.accountText.text;
-    NSString *password = self.passwordText.text;
+//    NSString *account = self.accountText.text;
+//    NSString *password = self.passwordText.text;
+    NSString *account = @"ft9fbcrw_gwscs521xk1juup79huuc";
+    NSString *password = @"";
     // trim
-    account = [account stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if ([YYIMUtility isEmptyString:account]) {
-        return;
-    }
     
-    [self hideKeyBoard:nil];
     
-    NSError *error;
-    account = [self prepareAccount:account password:password error:&error];
-    if (error) {
-        [self showHint:[error localizedDescription]];
-        return;
-    }
-    
-    [self showThemeHudInView:self.view];
-    
-    YYIMLoginCompleteBlock block = ^(BOOL result, NSDictionary *userInfo, YYIMError *loginError) {
-        if (result) {
-            [self hideHud];
-            [[NSNotificationCenter defaultCenter] postNotificationName:YYIM_NOTIFICATION_LOGINCHANGE object:@YES];
-        } else {
-            if (loginError) {
-                NSString *message;
-                if ([[loginError errorMsg] isEqualToString:@"app not found"]) {
-                    message = @"登录的应用不存在";
-                } else {
-                    message = [loginError errorMsg];
-                }
-                if (!message) {
-                    message = @"连接IM服务器失败";
-                }
-                
-                [self hideHud];
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[@"登录失败:" stringByAppendingString:message] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
-            }
-        }
-    };
-    
-    if ([YYIMUtility isEmptyString:account]) {
-        [[YYIMChat sharedInstance].chatManager loginAnonymousWithCompletion:block];
-    } else {
-        [[YYIMChat sharedInstance].chatManager login:account completion:block];
-    }
+//    account = [account stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    if ([YYIMUtility isEmptyString:account]) {
+//        return;
+//    }
+//
+//    [self hideKeyBoard:nil];
+//
+//    NSError *error;
+//    account = [self prepareAccount:account password:password error:&error];
+//    if (error) {
+//        [self showHint:[error localizedDescription]];
+//        return;
+//    }
+//
+//    [self showThemeHudInView:self.view];
+//
+//    YYIMLoginCompleteBlock block = ^(BOOL result, NSDictionary *userInfo, YYIMError *loginError) {
+//        if (result) {
+//            [self hideHud];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:YYIM_NOTIFICATION_LOGINCHANGE object:@YES];
+//        } else {
+//            if (loginError) {
+//                NSString *message;
+//                if ([[loginError errorMsg] isEqualToString:@"app not found"]) {
+//                    message = @"登录的应用不存在";
+//                } else {
+//                    message = [loginError errorMsg];
+//                }
+//                if (!message) {
+//                    message = @"连接IM服务器失败";
+//                }
+//
+//                [self hideHud];
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:[@"登录失败:" stringByAppendingString:message] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                [alertView show];
+//            }
+//        }
+//    };
+//
+//    if ([YYIMUtility isEmptyString:account]) {
+//        [[YYIMChat sharedInstance].chatManager loginAnonymousWithCompletion:block];
+//    } else {
+//        [[YYIMChat sharedInstance].chatManager login:account completion:block];
+//    }
 }
 
 - (IBAction)settingAction:(id)sender {

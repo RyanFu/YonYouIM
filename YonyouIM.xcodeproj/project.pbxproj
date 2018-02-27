@@ -1266,6 +1266,14 @@
 		D4E52B401CCE4EC100886CDB /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4E52B371CCE4E8600886CDB /* LoginViewController.xib */; };
 		D4F074F31C2970C500E9A49C /* YYIMNetMeetingChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F074F11C2970C500E9A49C /* YYIMNetMeetingChatCell.m */; };
 		D4F074F41C2970C500E9A49C /* YYIMNetMeetingChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4F074F21C2970C500E9A49C /* YYIMNetMeetingChatCell.xib */; };
+		F931C41C201AFC9B0016E528 /* MessageService.m in Sources */ = {isa = PBXBuildFile; fileRef = F931C418201AFC990016E528 /* MessageService.m */; };
+		F931C41D201AFC9B0016E528 /* IMManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F931C419201AFC9A0016E528 /* IMManager.m */; };
+		F931C420201B04EA0016E528 /* YYMessage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = F931C41F201B04E90016E528 /* YYMessage+Extend.m */; };
+		F931C422201B08C30016E528 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F931C421201B08C30016E528 /* AFNetworking.framework */; };
+		F931C425201B09C00016E528 /* YYIMDateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F931C423201B09BF0016E528 /* YYIMDateParser.m */; };
+		F931C429201C137C0016E528 /* YYIMConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = F931C428201C137B0016E528 /* YYIMConfig.plist */; };
+		F931C42C201C19A40016E528 /* AppDelegate+YYIM.m in Sources */ = {isa = PBXBuildFile; fileRef = F931C42A201C19A30016E528 /* AppDelegate+YYIM.m */; };
+		F931C430201C637E0016E528 /* AFNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F931C421201B08C30016E528 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9EFD0152019FB100054642B /* YYIMChat.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFCEB22019FB0E0054642B /* YYIMChat.m */; };
 		F9EFD0162019FB100054642B /* YYIMConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFCEB42019FB0E0054642B /* YYIMConfig.m */; };
 		F9EFD0172019FB100054642B /* YYIMError.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFCEB62019FB0E0054642B /* YYIMError.m */; };
@@ -1393,6 +1401,19 @@
 		F9EFD0912019FB100054642B /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFD00C2019FB0F0054642B /* libopencore-amrwb.a */; };
 		F9EFD0922019FB100054642B /* YMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = F9EFD0142019FB0F0054642B /* YMVoiceConverter.mm */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F931C426201B0A2C0016E528 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F931C430201C637E0016E528 /* AFNetworking.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		27D5AD3F1F61297500048355 /* ChangeMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeMemberViewController.h; sourceTree = "<group>"; };
@@ -2256,6 +2277,19 @@
 		D4F074FD1C29733000E9A49C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		D4F074FF1C29733B00E9A49C /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		D4F075011C29734800E9A49C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F931C418201AFC990016E528 /* MessageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageService.m; sourceTree = "<group>"; };
+		F931C419201AFC9A0016E528 /* IMManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMManager.m; sourceTree = "<group>"; };
+		F931C41A201AFC9A0016E528 /* IMManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMManager.h; sourceTree = "<group>"; };
+		F931C41B201AFC9A0016E528 /* MessageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageService.h; sourceTree = "<group>"; };
+		F931C41E201B04E90016E528 /* YYMessage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYMessage+Extend.h"; sourceTree = "<group>"; };
+		F931C41F201B04E90016E528 /* YYMessage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYMessage+Extend.m"; sourceTree = "<group>"; };
+		F931C421201B08C30016E528 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
+		F931C423201B09BF0016E528 /* YYIMDateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYIMDateParser.m; sourceTree = "<group>"; };
+		F931C424201B09BF0016E528 /* YYIMDateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYIMDateParser.h; sourceTree = "<group>"; };
+		F931C428201C137B0016E528 /* YYIMConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = YYIMConfig.plist; sourceTree = "<group>"; };
+		F931C42A201C19A30016E528 /* AppDelegate+YYIM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+YYIM.m"; sourceTree = "<group>"; };
+		F931C42B201C19A40016E528 /* AppDelegate+YYIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+YYIM.h"; sourceTree = "<group>"; };
+		F931C42F201C61720016E528 /* YonyouIM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YonyouIM.entitlements; sourceTree = "<group>"; };
 		F9EFCEB12019FB0E0054642B /* YYIMChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYIMChat.h; sourceTree = "<group>"; };
 		F9EFCEB22019FB0E0054642B /* YYIMChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYIMChat.m; sourceTree = "<group>"; };
 		F9EFCEB32019FB0E0054642B /* YYIMConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYIMConfig.h; sourceTree = "<group>"; };
@@ -2622,6 +2656,7 @@
 				F9EFD08D2019FB100054642B /* libidn.a in Frameworks */,
 				D4A1BBE71BC612BB00AEF2A0 /* AudioToolbox.framework in Frameworks */,
 				D4A1BBE81BC612BB00AEF2A0 /* MobileCoreServices.framework in Frameworks */,
+				F931C422201B08C30016E528 /* AFNetworking.framework in Frameworks */,
 				F9EFD0902019FB100054642B /* libopencore-amrnb.a in Frameworks */,
 				D4A1BBE91BC612BB00AEF2A0 /* AssetsLibrary.framework in Frameworks */,
 				D4A1BBEA1BC612BB00AEF2A0 /* AVFoundation.framework in Frameworks */,
@@ -3029,6 +3064,7 @@
 		D44693951BBA1E7F0061BD23 = {
 			isa = PBXGroup;
 			children = (
+				F931C42F201C61720016E528 /* YonyouIM.entitlements */,
 				F9EFCEAF2019FB0E0054642B /* YonyouIMSdk */,
 				D46098341BCCF6230087CDBE /* YonyouIM */,
 				D40298DF1BBA6AEF006E1C05 /* Frameworks */,
@@ -3049,6 +3085,18 @@
 		D46098341BCCF6230087CDBE /* YonyouIM */ = {
 			isa = PBXGroup;
 			children = (
+				F931C42B201C19A40016E528 /* AppDelegate+YYIM.h */,
+				F931C42A201C19A30016E528 /* AppDelegate+YYIM.m */,
+				F931C428201C137B0016E528 /* YYIMConfig.plist */,
+				F931C424201B09BF0016E528 /* YYIMDateParser.h */,
+				F931C423201B09BF0016E528 /* YYIMDateParser.m */,
+				F931C421201B08C30016E528 /* AFNetworking.framework */,
+				F931C41E201B04E90016E528 /* YYMessage+Extend.h */,
+				F931C41F201B04E90016E528 /* YYMessage+Extend.m */,
+				F931C41A201AFC9A0016E528 /* IMManager.h */,
+				F931C419201AFC9A0016E528 /* IMManager.m */,
+				F931C41B201AFC9A0016E528 /* MessageService.h */,
+				F931C418201AFC990016E528 /* MessageService.m */,
 				D46098351BCCF6230087CDBE /* AppDelegate.h */,
 				D46098371BCCF6230087CDBE /* Class */,
 				D41C4C521CBDF3CB0099C4D8 /* Target */,
@@ -4789,6 +4837,7 @@
 				D4A1BBE61BC612BB00AEF2A0 /* Frameworks */,
 				D4A1BBFC1BC612BB00AEF2A0 /* Resources */,
 				D4DDE6C21C64511200FFBEB7 /* ShellScript */,
+				F931C426201B0A2C0016E528 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -4827,8 +4876,13 @@
 				ORGANIZATIONNAME = yonyou;
 				TargetAttributes = {
 					D4A1BB571BC612BB00AEF2A0 = {
-						DevelopmentTeam = 2CTD3XS8EZ;
+						DevelopmentTeam = H9657W9RTX;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -5109,6 +5163,7 @@
 				CC3494D11D1171020043D5E8 /* GroupQRCCodeAlreadyFullViewController.xib in Resources */,
 				D4609AC41BCCF6240087CDBE /* 1f613.png in Resources */,
 				D4609A2C1BCCF6240087CDBE /* ChatBatchMixedSubDetailCell.xib in Resources */,
+				F931C429201C137C0016E528 /* YYIMConfig.plist in Resources */,
 				CC3348CF1D10137000C6585F /* YYIMMicroVideoRecordView.xib in Resources */,
 				D4609AE61BCCF6240087CDBE /* 1f635.png in Resources */,
 				D4609A621BCCF6240087CDBE /* ImageMessageViewController.xib in Resources */,
@@ -5658,6 +5713,7 @@
 				F9EFD0232019FB100054642B /* YYChatGroupMember.m in Sources */,
 				CCB487061C0C3C7200CCAFE5 /* SearchUserInviteViewController.m in Sources */,
 				D4609AF01BCCF6240087CDBE /* SDImageCache.m in Sources */,
+				F931C41C201AFC9B0016E528 /* MessageService.m in Sources */,
 				CC41BCA91CCF8BDC00DC661E /* YYIMDatePickerView.m in Sources */,
 				D4609A201BCCF6240087CDBE /* YMMessageExtendView.m in Sources */,
 				D4609A411BCCF6240087CDBE /* NormalTableViewCell.m in Sources */,
@@ -5812,6 +5868,7 @@
 				CC41F9B31D02CFA700DB7BCC /* NSURL+SCSaveToCameraRoll.m in Sources */,
 				D4609A0D1BCCF6240087CDBE /* YYIMEmojiKeyboardCellPopupView.m in Sources */,
 				D4609A831BCCF6240087CDBE /* FolderTabBarController.m in Sources */,
+				F931C425201B09C00016E528 /* YYIMDateParser.m in Sources */,
 				D4609A011BCCF6240087CDBE /* YYIMColorHelper.m in Sources */,
 				D481D2E01C4E209400208FF5 /* SearchMixedTableViewCell.m in Sources */,
 				D4609A9C1BCCF6240087CDBE /* JoinChatGroupViewController.m in Sources */,
@@ -5895,6 +5952,7 @@
 				CCCB00191CA0E5000053A214 /* ChatSingleConferenceTableLeftCell.m in Sources */,
 				CCB2DA521D1D26400049AFA1 /* YMTableMenu.m in Sources */,
 				D4609A381BCCF6240087CDBE /* ChatTableRightCell.m in Sources */,
+				F931C42C201C19A40016E528 /* AppDelegate+YYIM.m in Sources */,
 				CC41F9CE1D02CFA700DB7BCC /* SCFilterImageView.m in Sources */,
 				F9EFD03A2019FB100054642B /* JUMPAnonymousAuthentication.m in Sources */,
 				D4609A1C1BCCF6240087CDBE /* MenuViewCell.m in Sources */,
@@ -5919,6 +5977,7 @@
 				D42C61501D2B81FB00F2B2A9 /* YMHaloLabel.m in Sources */,
 				F9EFD0622019FB100054642B /* YYIMUserProvider.m in Sources */,
 				D41C490F1CB674CD0099C4D8 /* YYIMNetMeetingNotifyViewController.m in Sources */,
+				F931C41D201AFC9B0016E528 /* IMManager.m in Sources */,
 				D4609A281BCCF6240087CDBE /* YMProgressView.m in Sources */,
 				D4609A6E1BCCF6240087CDBE /* AccountInfoViewController.m in Sources */,
 				CC41BCA01CCF8BB500DC661E /* YYIMNetMeetingCheckViewController.m in Sources */,
@@ -6005,6 +6064,7 @@
 				F9EFD0322019FB100054642B /* YYPubAccountMenu.m in Sources */,
 				D41C4C591CBDF3CB0099C4D8 /* AppDelegate.m in Sources */,
 				F9EFD0602019FB100054642B /* YYIMRosterProvider.m in Sources */,
+				F931C420201B04EA0016E528 /* YYMessage+Extend.m in Sources */,
 				CC41F9EF1D02CFA700DB7BCC /* SCRecordSession.m in Sources */,
 				F9EFD0262019FB100054642B /* YYMessageContent.m in Sources */,
 			);
@@ -6426,14 +6486,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = YonyouIM.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 腾飞 李 (594U4K532Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 2CTD3XS8EZ;
+				DEVELOPMENT_TEAM = H9657W9RTX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/YonyouIM",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -6444,7 +6506,7 @@
 					/Applications/Xcode6.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/YonyouIM/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6464,7 +6526,7 @@
 					"$(PROJECT_DIR)/YonyouIMSdk/Vender/VoiceConvert/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonyou.sns.imtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yonyou.ylink;
 				PRODUCT_NAME = YonyouIM;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6477,14 +6539,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = YonyouIM.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: yonyou software Co.,Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 2CTD3XS8EZ;
+				DEVELOPMENT_TEAM = H9657W9RTX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/YonyouIM",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "TARGET_ALPHA=1";
 				HEADER_SEARCH_PATHS = (
@@ -6492,7 +6556,7 @@
 					/Applications/Xcode6.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/YonyouIM/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6512,7 +6576,7 @@
 					"$(PROJECT_DIR)/YonyouIMSdk/Vender/VoiceConvert/lib",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yonyou.sns.imtest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yonyou.ylink;
 				PRODUCT_NAME = YonyouIM;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

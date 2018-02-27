@@ -30,7 +30,7 @@
 #import "WXApi.h"
 #import "YYIMHeadPhonesManager.h"
 
-@interface AppDelegate ()<YYIMChatDelegate, UIAlertViewDelegate, YYIMTokenDelegate, WXApiDelegate>
+@interface AppDelegate ()<UIAlertViewDelegate, WXApiDelegate>
 
 @property (retain, nonatomic) UINavigationController *mainNavController;
 @property (retain, nonatomic) MainViewController *mainViewController;
@@ -50,19 +50,43 @@
     
     [YYIMUtility initNavigationBarStyle];
     
+    // image cache path
+    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"YMImages"];
+    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
+    [[SDWebImageManager sharedManager] setCacheKeyFilter:^(NSURL *url) {
+        return [YYIMUtility cacheKeyForYMImageUrl:url];
+    }];
+    self.window.rootViewController = self.mainNavController;
+    _loginNavController = nil;
+    [self.window makeKeyAndVisible];
+    
+//    [self loginChange:nil];
+    return YES;
+}
+
+
+- (void)abcc{
+   // YYIMLogInfo(@"didFinishLaunchingWithOptions:%ld", (long)[application applicationState]);
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [YYIMUtility initNavigationBarStyle];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginChange:) name:YYIM_NOTIFICATION_LOGINCHANGE object:nil];
     
-    [application cancelAllLocalNotifications];
+   // [application cancelAllLocalNotifications];
     
     // 服务配置
     [[ConfigManager sharedManager] sdkConfig];
     // 注册app
     if (![[YYIMTargetManager sharedManager] allowMultiApp]) {
-        [[YYIMChat sharedInstance] registerApp:[[YYIMTargetManager sharedManager] getDefaultAppKey] etpKey:[[YYIMTargetManager sharedManager] getDefaultEtpKey]];
+        //        [[YYIMChat sharedInstance] registerApp:[[YYIMTargetManager sharedManager] getDefaultAppKey] etpKey:[[YYIMTargetManager sharedManager] getDefaultEtpKey]];
+        [[YYIMChat sharedInstance] registerApp:@"youbaozhang_f" etpKey:@"youbaozhang"];
     }
     // 注册多方通话
     if ([[YYIMTargetManager sharedManager] allowTeleConference]) {
-        [[YYIMChat sharedInstance].chatManager registerDuduWithAccountIdentify:@"676272C9DBB7EB768883CFF4CC77EDAF" appkeyTemp:@"28BA35730731FC56D008ABD545D56608"];
+        //        [[YYIMChat sharedInstance].chatManager registerDuduWithAccountIdentify:@"676272C9DBB7EB768883CFF4CC77EDAF" appkeyTemp:@"28BA35730731FC56D008ABD545D56608"];
+        [[YYIMChat sharedInstance].chatManager registerDuduWithAccountIdentify:@"35b30a5a98689f7aa2c8efde5f614317" appkeyTemp:@"CB13C174B3BFF3A8D4F1D47E752D23B7"];
     }
     
     // 添加代理
@@ -71,9 +95,11 @@
     [[YYIMChat sharedInstance].chatManager registerTokenDelegate:self];
     // 注册推送证书
 #if defined(DEBUG) && DEBUG
-    [[YYIMChat sharedInstance] registerApnsCerName:@"yyimtest_dev"];
+    //    [[YYIMChat sharedInstance] registerApnsCerName:@"yyimtest_dev"];
+    [[YYIMChat sharedInstance] registerApnsCerName:@"youbaozhang"];
 #else
-    [[YYIMChat sharedInstance] registerApnsCerName:@"yyimtest_dis"];
+    //    [[YYIMChat sharedInstance] registerApnsCerName:@"yyimtest_dis"];
+    [[YYIMChat sharedInstance] registerApnsCerName:@"youbaozhang"];
 #endif
     
     // 设置日志级别
@@ -81,7 +107,7 @@
     // 本地推送
     [[YYIMChat sharedInstance].chatManager setEnableLocalNotification:YES];
     // 注册远程推送
-    [self registerRemoteNotification];
+    //[self registerRemoteNotification];
     
     [[YYIMChat sharedInstance].chatManager setOrgEnable:YES];
     [[YYIMChat sharedInstance].chatManager setPanEnable:NO];
@@ -108,108 +134,107 @@
     [NetMeetingDispatch sharedInstance];
     [YYIMHeadPhonesManager sharedInstance];
     
-    [[YYIMChat sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+   // [[YYIMChat sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     [self.window makeKeyAndVisible];
-    [self loginChange:nil];
-    return YES;
+    //[self loginChange:nil];
 }
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    [[YYIMChat sharedInstance] applicationWillResignActive:application];
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[YYIMChat sharedInstance] applicationDidEnterBackground:application];
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[YYIMChat sharedInstance] applicationWillEnterForeground:application];
-    [application cancelAllLocalNotifications];
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [[YYIMChat sharedInstance] applicationDidBecomeActive:application];
-    
-    NSString *untreatedChannelId = [[YYIMChat sharedInstance].chatManager getUntreatedNetMeetingInviting];
-    
-    if (untreatedChannelId) {
-        [[YYIMChat sharedInstance].chatManager treatNetMeetingInvite];
-        
-        [[NetMeetingDispatch sharedInstance] showNetMeetingInviteConfirmView:untreatedChannelId];
-    }
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [[YYIMChat sharedInstance] applicationWillTerminate:application];
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [[YYIMChat sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [[YYIMChat sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [[YYIMChat sharedInstance] application:application didReceiveRemoteNotification:userInfo];
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
-    [[YYIMChat sharedInstance] application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-    completionHandler(UIBackgroundFetchResultNoData);
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return  [WXApi handleOpenURL:url delegate:self];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [WXApi handleOpenURL:url delegate:self];
-}
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [[YYIMChat sharedInstance] application:application didReceiveLocalNotification:notification];
-    [self.mainNavController popToRootViewControllerAnimated:YES];
-    [self.mainNavController dismissViewControllerAnimated:YES completion:nil];
-    [self.mainViewController setSelectedIndex:0];
-}
-
--(void)onReq:(BaseReq*)req {
-    YYIMLogDebug(@"%@",req);
-}
-
--(void)onResp:(BaseResp*)resp {
-    YYIMLogDebug(@"%@",resp);
-    
-    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
-        SendMessageToWXResp *message = (SendMessageToWXResp *)resp;
-        
-        YYIMLogDebug(@"onResp--微信发送消息完成%d",message.errCode);
-    }
-}
-
-- (void)registerRemoteNotification {
-    UIApplication *application = [UIApplication sharedApplication];
-    
-    // 注册推送通知
-    if (YYIM_iOS8) {
-        [application registerForRemoteNotifications];
-        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
-        [application registerUserNotificationSettings:settings];
-    } else {
-        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert;
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
-    }
-}
-
+//
+//- (void)applicationWillResignActive:(UIApplication *)application {
+//    [[YYIMChat sharedInstance] applicationWillResignActive:application];
+//}
+//
+//- (void)applicationDidEnterBackground:(UIApplication *)application {
+//    [[YYIMChat sharedInstance] applicationDidEnterBackground:application];
+//}
+//
+//- (void)applicationWillEnterForeground:(UIApplication *)application {
+//    [[YYIMChat sharedInstance] applicationWillEnterForeground:application];
+//    [application cancelAllLocalNotifications];
+//}
+//
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    [[YYIMChat sharedInstance] applicationDidBecomeActive:application];
+//
+//    NSString *untreatedChannelId = [[YYIMChat sharedInstance].chatManager getUntreatedNetMeetingInviting];
+//
+//    if (untreatedChannelId) {
+//        [[YYIMChat sharedInstance].chatManager treatNetMeetingInvite];
+//
+//        [[NetMeetingDispatch sharedInstance] showNetMeetingInviteConfirmView:untreatedChannelId];
+//    }
+//}
+//
+//- (void)applicationWillTerminate:(UIApplication *)application {
+//    [[YYIMChat sharedInstance] applicationWillTerminate:application];
+//}
+//
+//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//    [[YYIMChat sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+//}
+//
+//- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+//    [[YYIMChat sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+//}
+//
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+//    [[YYIMChat sharedInstance] application:application didReceiveRemoteNotification:userInfo];
+//}
+//
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+//    [[YYIMChat sharedInstance] application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+//    completionHandler(UIBackgroundFetchResultNoData);
+//}
+//
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    return  [WXApi handleOpenURL:url delegate:self];
+//}
+//
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//    return [WXApi handleOpenURL:url delegate:self];
+//}
+//
+//- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+//    [[YYIMChat sharedInstance] application:application didReceiveLocalNotification:notification];
+//    [self.mainNavController popToRootViewControllerAnimated:YES];
+//    [self.mainNavController dismissViewControllerAnimated:YES completion:nil];
+//    [self.mainViewController setSelectedIndex:0];
+//}
+//
+//-(void)onReq:(BaseReq*)req {
+//    YYIMLogDebug(@"%@",req);
+//}
+//
+//-(void)onResp:(BaseResp*)resp {
+//    YYIMLogDebug(@"%@",resp);
+//
+//    if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
+//        SendMessageToWXResp *message = (SendMessageToWXResp *)resp;
+//
+//        YYIMLogDebug(@"onResp--微信发送消息完成%d",message.errCode);
+//    }
+//}
+//
+//- (void)registerRemoteNotification {
+//    UIApplication *application = [UIApplication sharedApplication];
+//
+//    // 注册推送通知
+//    if (YYIM_iOS8) {
+//        [application registerForRemoteNotifications];
+//        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+//        [application registerUserNotificationSettings:settings];
+//    } else {
+//        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert;
+//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+//    }
+//}
+//
 -(void)loginChange:(NSNotification *)notification {
     // is can auto login
     BOOL isAutoLogin = [[[YYIMChat sharedInstance] chatManager] isAutoLogin];
     // is login success
     BOOL loginSuccess = [notification.object boolValue];
-    
+
     if (isAutoLogin || loginSuccess) {
         self.window.rootViewController = self.mainNavController;
         _loginNavController = nil;
@@ -238,131 +263,131 @@
     }
     return _loginNavController;
 }
-
-#pragma mark yyimchat delegate
-
-- (void)didConnect {
-    YYIMLogInfo(@"didConnect");
-}
-
-- (void)didAuthenticate {
-    YYIMLogInfo(@"didAuthenticate");
-    [Bugly setUserIdentifier:[[YYIMConfig sharedInstance] getFullUser]];
-}
-
-- (void)didConnectFailure:(YYIMError *)error {
-    YYIMLogInfo(@"连接IM服务器失败:%ld|%@", (long)[error errorCode], [error errorMsg]);
-}
-
-- (void)didAuthenticateFailure:(YYIMError *)error {
-    YYIMLogInfo(@"IM服务器认证失败:%ld|%@", (long)[error errorCode], [error errorMsg]);
-}
-
-- (void)didLoginConflictOccurred {
-    [[NetMeetingDispatch sharedInstance] didNetMeetingDispatchNeedClose];
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的帐号在其他客户端登陆" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertView show];
-}
-
-- (void)didNetMeetingInitFaild {
-    [MBProgressHUD showHint:@"视频服务初始化失败" toView:nil];
-}
-
-- (void)didNotLoadRosterUsersWithError:(YYIMError *)error {
-    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载好友用户信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
-}
-
-- (void)didNotLoadRostersWithError:(YYIMError *)error {
-    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载好友信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
-}
-
-- (void)didNotLoadChatGroupWithError:(YYIMError *)error {
-    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载群组信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
-}
-
-- (void)didNotLoadPubAccountWithError:(YYIMError *)error {
-    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载公共号信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
-}
-
-- (void)didPresenceOnline {
-    [MBProgressHUD showHint:@"Presence OK" toView:nil];
-}
-
-- (void)didNetMeetingInitSuccess {
-#warning temp for test agora log,need to be delete when liuxiu finish the test work.only for alpha.
-#if defined(DEBUG) && DEBUG
-    [[YYIMChat sharedInstance].chatManager setNetMeetingLogFilter:kYYIMNetMeetingLogFilterError];
-#else
-    [[YYIMChat sharedInstance].chatManager setNetMeetingLogFilter:kYYIMNetMeetingLogFilterDebug];
-#endif
-}
-
-#pragma mark alert delegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [[NSNotificationCenter defaultCenter] postNotificationName:YYIM_NOTIFICATION_LOGINCHANGE object:@NO];
-}
-
-#pragma mark YYIMTokenDelegate
-
-- (void)getAppTokenWithComplete:(void (^)(BOOL, id))complete {
-    YYIMLogInfo(@"getAppTokenWithComplete");
-    NSDictionary *parameters = [self prepareParameters];
-    if (!parameters) {
-        complete(YES, [YYToken tokenWithExpiration:@"123456" expiration:@"0"]);
-        return;
-    }
-    NSString *urlString = [[YYIMConfig sharedInstance] getDemoTokenServlet];
-    
-    YMAFHTTPSessionManager *manager = [YMAFHTTPSessionManager manager];
-    [manager setCompletionQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
-    
-    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary *dic = (NSDictionary *)responseObject;
-        YYToken *token = [YYToken tokenWithExpiration:[dic objectForKey:@"token"] expiration:[dic objectForKey:@"expiration"]];
-        YYIMLogInfo(@"getAppTokenWithComplete$succ:%@|%f", [token tokenStr], [token expirationTimeInterval]);
-        complete(YES, token);
-    } failure:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-        NSHTTPURLResponse *response = error.userInfo[YMAFNetworkingOperationFailingURLResponseErrorKey];
-        YYIMLogError(@"getAppTokenWithComplete$fail:%@|%@", response, [error localizedDescription]);
-        
-        NSDictionary *dic = (NSDictionary *)responseObject;
-        NSString *message;
-        NSInteger statusCode = [response statusCode];
-        switch (statusCode) {
-            case 400:
-            case 401:
-                message = @"用户名或密码错误";
-                break;
-            default:
-                message = [dic objectForKey:@"message"];
-                break;
-        }
-        if (!message) {
-            message = @"未知错误";
-        }
-        YYIMError *ymError = [YYIMError errorWithCode:statusCode errorMessage:message];
-        [ymError setSrcError: error];
-        complete(NO, ymError);
-    }];
-}
-
-- (YYToken *)getAppToken {
-    return nil;
-}
-
-- (NSDictionary *)prepareParameters {
-    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [parameters setObject:[userDefaults objectForKey:YYIM_ACCOUNT] forKey:@"username"];
-    [parameters setObject:[userDefaults objectForKey:YYIM_PASSWORD] forKey:@"password"];
-    [parameters setObject:[userDefaults objectForKey:YYIM_APPKEY] forKey:@"app"];
-    [parameters setObject:[userDefaults objectForKey:YYIM_ETPKEY] forKey:@"etp"];
-    return parameters;
-}
+//
+//#pragma mark yyimchat delegate
+//
+//- (void)didConnect {
+//    YYIMLogInfo(@"didConnect");
+//}
+//
+//- (void)didAuthenticate {
+//    YYIMLogInfo(@"didAuthenticate");
+//    [Bugly setUserIdentifier:[[YYIMConfig sharedInstance] getFullUser]];
+//}
+//
+//- (void)didConnectFailure:(YYIMError *)error {
+//    YYIMLogInfo(@"连接IM服务器失败:%ld|%@", (long)[error errorCode], [error errorMsg]);
+//}
+//
+//- (void)didAuthenticateFailure:(YYIMError *)error {
+//    YYIMLogInfo(@"IM服务器认证失败:%ld|%@", (long)[error errorCode], [error errorMsg]);
+//}
+//
+//- (void)didLoginConflictOccurred {
+//    [[NetMeetingDispatch sharedInstance] didNetMeetingDispatchNeedClose];
+//
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的帐号在其他客户端登陆" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alertView show];
+//}
+//
+//- (void)didNetMeetingInitFaild {
+//    [MBProgressHUD showHint:@"视频服务初始化失败" toView:nil];
+//}
+//
+//- (void)didNotLoadRosterUsersWithError:(YYIMError *)error {
+//    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载好友用户信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
+//}
+//
+//- (void)didNotLoadRostersWithError:(YYIMError *)error {
+//    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载好友信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
+//}
+//
+//- (void)didNotLoadChatGroupWithError:(YYIMError *)error {
+//    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载群组信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
+//}
+//
+//- (void)didNotLoadPubAccountWithError:(YYIMError *)error {
+//    [MBProgressHUD showHint:[NSString stringWithFormat:@"加载公共号信息失败:%ld|%@", (long)[error errorCode], [error errorMsg]] toView:nil];
+//}
+//
+//- (void)didPresenceOnline {
+//    [MBProgressHUD showHint:@"Presence OK" toView:nil];
+//}
+//
+//- (void)didNetMeetingInitSuccess {
+//#warning temp for test agora log,need to be delete when liuxiu finish the test work.only for alpha.
+//#if defined(DEBUG) && DEBUG
+//    [[YYIMChat sharedInstance].chatManager setNetMeetingLogFilter:kYYIMNetMeetingLogFilterError];
+//#else
+//    [[YYIMChat sharedInstance].chatManager setNetMeetingLogFilter:kYYIMNetMeetingLogFilterDebug];
+//#endif
+//}
+//
+//#pragma mark alert delegate
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+//    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:YYIM_NOTIFICATION_LOGINCHANGE object:@NO];
+//}
+//
+//#pragma mark YYIMTokenDelegate
+//
+//- (void)getAppTokenWithComplete:(void (^)(BOOL, id))complete {
+//    YYIMLogInfo(@"getAppTokenWithComplete");
+//    NSDictionary *parameters = [self prepareParameters];
+//    if (!parameters) {
+//        complete(YES, [YYToken tokenWithExpiration:@"123456" expiration:@"0"]);
+//        return;
+//    }
+//    NSString *urlString = [[YYIMConfig sharedInstance] getDemoTokenServlet];
+//
+//    YMAFHTTPSessionManager *manager = [YMAFHTTPSessionManager manager];
+//    [manager setCompletionQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+//
+//    [manager GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSDictionary *dic = (NSDictionary *)responseObject;
+//        YYToken *token = [YYToken tokenWithExpiration:[dic objectForKey:@"token"] expiration:[dic objectForKey:@"expiration"]];
+//        YYIMLogInfo(@"getAppTokenWithComplete$succ:%@|%f", [token tokenStr], [token expirationTimeInterval]);
+//        complete(YES, token);
+//    } failure:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+//        NSHTTPURLResponse *response = error.userInfo[YMAFNetworkingOperationFailingURLResponseErrorKey];
+//        YYIMLogError(@"getAppTokenWithComplete$fail:%@|%@", response, [error localizedDescription]);
+//
+//        NSDictionary *dic = (NSDictionary *)responseObject;
+//        NSString *message;
+//        NSInteger statusCode = [response statusCode];
+//        switch (statusCode) {
+//            case 400:
+//            case 401:
+//                message = @"用户名或密码错误";
+//                break;
+//            default:
+//                message = [dic objectForKey:@"message"];
+//                break;
+//        }
+//        if (!message) {
+//            message = @"未知错误";
+//        }
+//        YYIMError *ymError = [YYIMError errorWithCode:statusCode errorMessage:message];
+//        [ymError setSrcError: error];
+//        complete(NO, ymError);
+//    }];
+//}
+//
+//- (YYToken *)getAppToken {
+//    return nil;
+//}
+//
+//- (NSDictionary *)prepareParameters {
+//    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+//
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [parameters setObject:[userDefaults objectForKey:YYIM_ACCOUNT] forKey:@"username"];
+//    [parameters setObject:[userDefaults objectForKey:YYIM_PASSWORD] forKey:@"password"];
+//    [parameters setObject:[userDefaults objectForKey:YYIM_APPKEY] forKey:@"app"];
+//    [parameters setObject:[userDefaults objectForKey:YYIM_ETPKEY] forKey:@"etp"];
+//    return parameters;
+//}
 
 @end

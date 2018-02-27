@@ -18,6 +18,8 @@
 #import "SDImageCache.h"
 #import <PgyUpdate/PgyUpdateManager.h>
 
+#import "ChatViewController.h"
+
 @interface MainViewController()<YYIMChatDelegate>
 
 @end
@@ -39,7 +41,15 @@
     // 右侧navItem
     self.navigationItem.rightBarButtonItem = [self.recentViewController rightBarButtonItem];
     
-    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+//    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+    
+    //添加小友客服：
+//    [[YYIMChat sharedInstance].chatManager addRoster:@"ft9fbcrw_5cscuqdgprqkr2vpdaowk"];
+    
+//    ChatViewController *chatViewController = [[ChatViewController alloc] initWithNibName:nil bundle:nil];
+//    chatViewController.chatId = @"18810379284";
+//    chatViewController.chatType = YM_MESSAGE_TYPE_CHAT;
+//    [self.navigationController pushViewController:chatViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
